@@ -384,3 +384,4 @@
         </div>
       </section>
     
+      <?php include_once 'partials/_footer.php'; ?>
