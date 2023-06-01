@@ -1,38 +1,30 @@
-# The Shuffle Editor (https://shuffle.dev)
+# TODO
 
-NOTE: npm commands overwrite the ./public directory.
 
-## 1. Getting Started
+## BDD structure
 
-Project's source files are placed in ./src/ directory. 
+- Table Book + test pour la section dans la home page
+- Table Author + test pour la section dans la home page
 
-* ./src/assets - default static files (eg. image placeholders). You should replace them with your own files.
-* ./src/scss/ - Sass sources used to build Bootstrap theme. Variables used in Theme Customizer are located in custom-variables.scss file.
 
-All your pages (templates) are stored in separated .pug or .html files (depends on your export preferences)
-* ./src/pug/*.pug 
-* ./src/html/*.html 
+## UI structure (nav + footer, links, etc.)
 
-## 2. Installation
+- Home page
+- Books page
+- Authors page
+- Orders page
+- Contact page
+- Cart page
+- Login page
+- Register page
+- Profile page
 
-```
-# Install dependencies
-npm install 
+## Project structure
 
-# Run dev server with live preview (Browsersync)
-npm run watch
+- Mettre en place les dossiers et fichiers de base en POO (entité, controller)
+- Mettre en place le code dans les fichiers de base en POO (classes, méthodes, propriétés, getters/setters, etc.)
 
-# Or make production build
-npm run build
-```
+--- Eva : Entités
+--- Jensone : Controllers
 
-## 3. Contact
 
-If you have found any bugs in the Tailwind Builder, have any questions, 
-comments or ideas for new features feel free to contact us:
-
-support@shuffle.dev
-
-## 4. Credits & Special thanks
-
-We use placeholders from https://unsplash.com/
