@@ -4,48 +4,93 @@ class Livre {
   - titre: String
   - auteur: Auteur
   - categorie: Catégorie
-  - exemplairesDisponibles: int
-  + emprunter(): boolean
-  + ajouterExemplaire()
+  - isbn: String
+  - dateParution: int
+  - nombrePages: int
+  - format: int
+  - exemplaireDisponible: Stock
+  + afficherUnLivre(): Array
+  + afficherTousLesLivres(): Array
+  + afficherLesLivresParTitre(): Array
+  + afficherLesLivresParAuteur(): Array
+  + afficherLesLivresParCatégorie(): Array
+  + afficherLesLivresParISBN(): Array
+  + afficherLesLivresParDateParution(): Array
+  + afficherLesLivresDisponibles(): Array
+  + ajouterLivre(): void
+  + modifierLivre(): void
+  + supprimerLivre(): void
 }
 
 class Auteur {
   - id: int
   - nom: String
+  - prenom: String
+  - nombre_oeuvre:Livre
   - dateNaissance: Date
   - nationalite: String
-}
+  - biographi:Text
+  + modifierAuteur():void
+  + supprimerAuteur():void
+  + ajouterAuteur():void
+  + afficherAuteurs():array
+  + afficherToutAuteurs():array
+  }
 
 class Catégorie {
   - id: int
   - nom: String
   - description: String
+  + modifierCategorie():void
+  + afficherLesCategories():Array
+  + afficherUneCategorie(): Array
+  + ajouterCategorie():void
+  + supprimerCategorie():void
 }
 
 class Commande {
   - id: int
   - client: Client
   - livre: Livre
-  - dateCommande: Date
-  - statut: String
-  + validerCommande()
-  + annulerCommande()
+  - dateDebut: Date
+  - dateRetour : Date
+  - statut: Bool
+  + ajouterCommande(): void
+  + validerCommande(): void
+  + annulerCommande(): void
+  + modifierCommande(): void
 }
 
 class Client {
   - id: int
   - nom: String
+  - prenom: String
   - adresse: String
   - email: String
-  + passerCommande(livre: Livre)
+  - telephone: String
+  - ville: String
+  + AjouterClient(): void
+  + modifierClient():void
+  + SupprimerClient(): void
+  + passerCommande(livre: Livre):void
+  + retourCommande(livre: Livre):void
+  + afficherLesClients():array
+  + afficherUnClient():array
+  + AfficheCommandes(): array
+  + AffichelivresEmpruntes(): array
 }
 
 class Utilisateur {
   - id: int
-  - nomUtilisateur: String
+  - nom: String
+  - email: String
+  - tel: String
   - motDePasse: String
-  + seConnecter()
-  + seDéconnecter()
+  + seConnecter(): void
+  + seDeconnecter(): void
+  + creerCompte(): void
+  + editCompte(): void
+  + supprCompte(): void
 }
 
 class Stock {
