@@ -1,0 +1,65 @@
+@startuml
+class Livre {
+  - id: int
+  - titre: String
+  - auteur: Auteur
+  - categorie: Catégorie
+  - exemplairesDisponibles: int
+  + emprunter(): boolean
+  + ajouterExemplaire()
+}
+
+class Auteur {
+  - id: int
+  - nom: String
+  - dateNaissance: Date
+  - nationalite: String
+}
+
+class Catégorie {
+  - id: int
+  - nom: String
+  - description: String
+}
+
+class Commande {
+  - id: int
+  - client: Client
+  - livre: Livre
+  - dateCommande: Date
+  - statut: String
+  + validerCommande()
+  + annulerCommande()
+}
+
+class Client {
+  - id: int
+  - nom: String
+  - adresse: String
+  - email: String
+  + passerCommande(livre: Livre)
+}
+
+class Utilisateur {
+  - id: int
+  - nomUtilisateur: String
+  - motDePasse: String
+  + seConnecter()
+  + seDéconnecter()
+}
+
+class Stock {
+  - livre: Livre
+  - quantité: int
+  + ajouterLivre(livre: Livre, quantité: int)
+  + retirerLivre(livre: Livre, quantité: int)
+}
+
+Livre "1" *-- "1" Auteur : écrit par
+Livre "1" *-- "1" Catégorie : catégorisé par
+Commande "0..*" -- "1" Client : effectuée par
+Utilisateur <|-- Client
+Utilisateur o-- Commande
+Stock "1" *-- "1" Livre : contient
+
+@enduml
