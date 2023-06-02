@@ -1,4 +1,8 @@
-<?php include_once 'partials/_head.php'; ?>
+
+<?php
+require_once './classes/Controller/AuthorController.php';
+$authors=getAll();
+include_once 'partials/_head.php'; ?>
         
       <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">
         
@@ -212,10 +216,11 @@
         <div class="container">
           <div class="text-center mb-20">
             <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">The team that made us successful</p>
-            <h2 class="fs-10 fw-semibold text-white mb-5">Expert Team Members</h2>
+            <h2 class="fs-10 fw-semibold text-white mb-5">Nos </h2>
           </div>
           <div class="container">
             <div class="row g-6">
+              <?php foreach($authors as $author){?>
               <div class="col-12 col-md-6 col-lg-3">
                 <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
                   <div class="d-flex justify-content-center">
@@ -223,13 +228,18 @@
                   </div>
                   <div class="position-absolute bottom-0 start-0 p-3 w-100">
                     <div class="py-4 px-5 bg-white rounded-1">
-                      <h3 class="fs-17 mb-1">Cody Fisher</h3>
-                      <p class="text-muted mb-0">Plains GP Holdings</p>
+                      <h3 class="fs-17 mb-1"><?=$author['nom']?> <?=$author['prenom']?></h3>
+                      <p class="text-muted mb-0">Nombre de livre: <?=$author['oeuvres']?></p>
+                      <p class="text-muted mb-0">Origine: <?=$author['biographie']?></p>
+                      <p class="text-muted mb-0"> Année: <?=$author['date_naissance']?></p>
+
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-md-6 col-lg-3">
+              <?php }?>
+
+              <!-- <div class="col-12 col-md-6 col-lg-3">
                 <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
                   <div class="d-flex justify-content-center">
                     <img class="w-100" src="gradia-assets/images/teams/avatar-xl2.png" alt="">
@@ -267,7 +277,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
