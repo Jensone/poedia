@@ -34,6 +34,5 @@ class Database
     }
 
 
-    print_r(getAll())
 ?>
 
