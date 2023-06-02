@@ -6,6 +6,8 @@
 
 namespace App;
 
+use App\Database;
+
 class Livre
 {
     // Propriétés
@@ -37,41 +39,49 @@ class Livre
     public function afficherUnLivre(Int $id): Array
     {
 
+        return $livre;
     }
 
     public function afficherTousLesLivres(): Array
     {
 
+        return $livres;
     }
 
     public function afficherLesLivresParTitre(): Array
     {
 
+        return $livreTitre;
     }
 
     public function afficherLesLivresParAuteur(): Array
     {
 
+        return $livreAuteur;
     }
 
     public function afficherLesLivresParCatégorie(): Array
     {
 
+        return $livreCategorie;
     }
 
     public function afficherLesLivresParISBN(): Array
     {
 
+        return $livreISBN;
     }
 
     public function afficherLesLivresParDateParution(): Array
     {
 
+        return $livreDateParution;
     }
 
     public function afficherLesLivresDisponibles(): Array
     {
 
+        return $livreDisponible;
     }
 
     public function ajouterLivre(): void
@@ -180,5 +190,3 @@ class Livre
         $this->stock = $stock;
     }
 }
-
-
