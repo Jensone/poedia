@@ -7,9 +7,61 @@
  namespace App;
 
  class Categorie{
+
     //Propriété
+    private $id;
+
+    private $nom;
+
+    private $description;
+
 
     //Méthodes
- }
 
+    public function modifierCategorie($id):void{
+    
+    }
+
+    public function afficherLesCategories():void{
+
+    }
+
+    public function afficherUneCategorie($id):void{
+
+    }
+
+    public function ajouterCategorie():void{
+
+    }
+
+    public function supprimerCategorie($id):void{
+
+    }
+
+    //getter et setter
+
+    public function getId():Int{
+        return $this->id;
+    }
+
+    public function setId():Int{
+        return $this->id;
+    }
+
+    public function getNom():String{
+        return $this->nom;
+    }
+
+    public function setNom():String{
+        return $this->nom;
+    }
+
+    public function getDescription():String{
+        return $this->description;
+    }
+
+    public function setDescription():String{
+        return $this->description;
+    }
+ }
 ?>
