@@ -1,11 +1,12 @@
 <?php
-
 /**
  * Classe Utilisateur
  * Représentation de Utilisateur
  */
 
 namespace App;
+
+use App\Database;
 
 class Utilisateur
 {
