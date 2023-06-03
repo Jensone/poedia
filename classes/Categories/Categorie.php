@@ -4,7 +4,9 @@
  * Representation d'une Categorie
  */
 
- namespace App;
+namespace App;
+
+use App\Database;
 
  class Categorie{
 
