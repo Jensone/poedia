@@ -1,30 +1,11 @@
-# TODO
+# Poedia
 
+![logo poedia](src/assets/images/color.png)
 
-## BDD structure
+Poedia est une application de gestion dédiée aux bibliothèques. Elle permet de gérer les livres, les auteurs, les commandes, les utilisateurs ete.
 
-- Table Book + test pour la section dans la home page
-- Table Author + test pour la section dans la home page
+#### Contributeurs :
 
+[Amine](https://github.com/amine-kt), [Aurélien](https://github.com/AurelienCaruge), [Eva](https://github.com/Eva-sive), [Julien](https://github.com/Noss92), [Marcelin](https://github.com/Marcelin69).
 
-## UI structure (nav + footer, links, etc.)
-
-- Home page
-- Books page
-- Authors page
-- Orders page
-- Contact page
-- Cart page
-- Login page
-- Register page
-- Profile page
-
-## Project structure
-
-- Mettre en place les dossiers et fichiers de base en POO (entité, controller)
-- Mettre en place le code dans les fichiers de base en POO (classes, méthodes, propriétés, getters/setters, etc.)
-
---- Eva : Entités
---- Jensone : Controllers
-
-
+---
