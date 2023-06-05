@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS poedia.stock (
 
 -- Auteurs (1)
 
-INSERT INTO Auteur (nom, prenom, nombreOeuvre, dateNaissance, nationalite, biographie) VALUES
+INSERT INTO auteurs (nom, prenom, nombreOeuvre, dateNaissance, nationalite, biographie) VALUES
     ('Dupont', 'Alice',null , '1980-02-12', 'Française', 'Alice Dupont est une auteure renommée.'),
     ('Smith', 'Emily',null , '1992-07-25', 'Américaine', 'Emily Smith est une jeune auteure prometteuse.'),
     ('Garcia', 'Sofia',null, '1975-11-06', 'Espagnole', 'Sofia Garcia a remporté de nombreux prix littéraires.'),
