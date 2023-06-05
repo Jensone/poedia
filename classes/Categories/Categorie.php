@@ -1,14 +1,14 @@
 <?php
 /**
- * CLASSES CATEGORIE
- * Representation d'une Categorie
+ * CLASSES categories
+ * Representation d'une categories
  */
 
 namespace App;
 
 use App\Database;
 
- class Categorie{
+ class categorie{
 
     //Propriété
     private $id;
@@ -20,24 +20,24 @@ use App\Database;
 
     //Méthodes
 
-    public function modifierCategorie($id):void{
+    public function modifiercategorie($id):void{
         
     }
 
-    public function afficherLesCategories():void{
-        Database::afficherTout('categorie');
+    public function afficherLescategories():void{
+        Database::afficherTout('categories');
     }
 
-    public function afficherUneCategorie($id):void{
-        Database::afficherUn('categorie',$id);
+    public function afficherUnecategorie($id):void{
+        Database::afficherUn('categories',$id);
     }
 
-    public function ajouterCategorie():void{
+    public function ajoutercategorie():void{
 
     }
 
-    public function supprimerCategorie($id):void{
-
+    public function supprimercategorie($id):void{
+        Database::supprimer($id,'categories');
     }
 
     //getter et setter
