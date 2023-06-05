@@ -8,6 +8,8 @@ namespace App;
 
 use App\Database;
 
+require_once('./Database/Database.php');
+
 class Livre
 {
     // Propriétés
@@ -42,9 +44,9 @@ class Livre
         return $livre;
     }
 
-    public function afficherTousLesLivres(): Array
+    public static function afficherTousLesLivres(): Array
     {
-
+        $livres = Database::afficherTout('livres');
         return $livres;
     }
 
@@ -90,11 +92,6 @@ class Livre
     }
 
     public function modifierLivre(Int $id): void
-    {
-
-    }
-
-    public function supprimerLivre(Int $id): void
     {
 
     }
