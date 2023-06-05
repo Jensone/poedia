@@ -1,12 +1,16 @@
-
 <?php
-require_once './classes/Controller/AuthorController.php';
-$authors=getAll();
+
+use App\Database;
+
+require_once 'Database/Database.php';
+
+$auteurs = Database::afficherTout('auteurs');
+$categories = Database::afficherTout('categories');
+
 include_once 'partials/_head.php'; ?>
         
-      <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">
-        
-      <?php include_once 'partials/_navigation.php'; ?>
+      <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">  
+        <?php include_once 'partials/_navigation.php'; ?>
 
         <div class="overflow-hidden pt-32 pb-40">
           <div class="container">
@@ -78,136 +82,24 @@ include_once 'partials/_head.php'; ?>
       <section class="pt-20 pb-32 bg-secondary overflow-hidden" style="background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%);">
         <div class="container">
           <div class="mw-md-lg mx-auto text-center mb-20">
-            <h2 class="fs-11 mb-0 text-secondary mb-5">Recommended by world-class companies</h2>
-            <p class="text-muted mw-md-md mx-auto mb-0">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim.</p>
+            <h2 class="fs-11 mb-0 text-secondary mb-5">Pour tous les goûts et envies littéraires</h2>
+            <p class="text-muted mw-md-md mx-auto mb-0">Navige par catégorie de livre.</p>
           </div>
           <div class="container">
             <div class="row justify-content-center mb-8 g-4">
-              <div class="col-auto justify-content-center">
-                <div class="d-inline-flex justify-content-center align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #6CD5F7 0%, #F89D5C 50.52%, #5B6AF0 100%);"></div>
+              <?php for($i = 0; $i < 8; $i++ ){ ?>
+                <div class="col-auto justify-content-center">
+                  <div class="d-inline-flex justify-content-center align-items-center p-4 bg-white" style="border-radius: 40px;">
+                    <div>
+                      <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #6CD5F7 0%, #F89D5C 50.52%, #5B6AF0 100%);"></div>
+                    </div>
+                    <h3 class="fs-17 fw-semibold mb-0 text-secondary"><?= $categories[$i]['nom']; ?></h3>
                   </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Manage remote team</h3>
                 </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #FFB36D 0%, #EC5353 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Connect with experts</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #6C2DD1 0%, #FF7DBC 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Easy to chat</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #CEE9C1 0%, #83C8DE 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Video analytics</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #56C1E3 0%, #5B6AF0 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Secured Payments</h3>
-                </div>
-              </div>
+              <?php } ?>
+
             </div>
-            <div class="row justify-content-center mb-8 g-4">
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex justify-content-center align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #6C2DD1 0%, #FF7DBC 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Live marketing reports</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #CEE9C1 0%, #83C8DE 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Project management</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #6CD5F7 0%, #F89D5C 50.52%, #5B6AF0 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Edit videos &amp; audios</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #56C1E3 0%, #5B6AF0 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Transaction history</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">No hidden fees</h3>
-                </div>
-              </div>
-            </div>
-            <div class="row justify-content-center g-4">
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex justify-content-center align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #CEE9C1 0%, #83C8DE 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Manage remote team</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #56C1E3 0%, #5B6AF0 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Connect with experts</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #FFB36D 0%, #EC5353 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Easy to chat</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #6C2DD1 0%, #FF7DBC 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Video analytics</h3>
-                </div>
-              </div>
-              <div class="col-auto d-flex justify-content-center">
-                <div class="d-inline-flex align-items-center p-4 bg-white" style="border-radius: 40px;">
-                  <div>
-                    <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #56C1E3 0%, #5B6AF0 100%);"></div>
-                  </div>
-                  <h3 class="fs-17 fw-semibold mb-0 text-secondary">Secured Payments</h3>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -215,28 +107,30 @@ include_once 'partials/_head.php'; ?>
       <section class="pt-28 pb-36 bg-secondary overflow-hidden">
         <div class="container">
           <div class="text-center mb-20">
-            <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">The team that made us successful</p>
-            <h2 class="fs-10 fw-semibold text-white mb-5">Nos </h2>
+            <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+              Remplis d'inspiration de divers vision
+            </p>
+            <h2 class="fs-10 fw-semibold text-white mb-5">Les auteurs</h2>
           </div>
           <div class="container">
             <div class="row g-6">
-              <?php foreach($authors as $author){?>
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
-                  <div class="d-flex justify-content-center">
-                    <img class="w-100" src="gradia-assets/images/teams/avatar-xl.png" alt="">
-                  </div>
-                  <div class="position-absolute bottom-0 start-0 p-3 w-100">
-                    <div class="py-4 px-5 bg-white rounded-1">
-                      <h3 class="fs-17 mb-1"><?=$author['nom']?> <?=$author['prenom']?></h3>
-                      <p class="text-muted mb-0">Nombre de livre: <?=$author['oeuvres']?></p>
-                      <p class="text-muted mb-0">Origine: <?=$author['biographie']?></p>
-                      <p class="text-muted mb-0"> Année: <?=$author['date_naissance']?></p>
+              <?php for($i = 0; $i < 4; $i++ ){ ?>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
+                    <div class="d-flex justify-content-center">
+                      <img class="w-100" src="gradia-assets/images/teams/avatar-xl.png" alt="">
+                    </div>
+                    <div class="position-absolute bottom-0 start-0 p-3 w-100">
+                      <div class="py-4 px-5 bg-white rounded-1">
+                        <h3 class="fs-17 mb-1"><?=$auteurs[$i]['nom']?> <?=$auteurs[$i]['prenom']?></h3>
+                        <p class="text-muted mb-0">Nombre de livre: <?=$auteurs[$i]['nombreOeuvre']?></p>
+                        <p class="text-muted mb-0">Origine: <?=$auteurs[$i]['nationalite']?></p>
+                        <p class="text-muted mb-0"> Année: <?=$auteurs[$i]['dateNaissance']?></p>
 
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
               <?php }?>
 
               <!-- <div class="col-12 col-md-6 col-lg-3">

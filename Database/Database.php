@@ -12,10 +12,10 @@ class Database
     public static function connect(): \PDO
     {
         // Variables de connexion
-        $host = getenv('HOST');
-        $dbname = getenv('DBNAME');
-        $user = getenv('USER');
-        $password = getenv('PASSWORD');
+        $host = 'localhost';
+        $dbname = 'poedia';
+        $user = 'root';
+        $password = 'root';
 
         try {
             $pdo = new \PDO('mysql:host=' . $host . ';dbname=' . $dbname . ';charset=utf8', $user, $password);
