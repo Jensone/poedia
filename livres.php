@@ -6,6 +6,8 @@ use App\Database;
 require_once 'classes/Livre/Livre.php';
 require_once 'Database/Database.php';
 
+$title = 'Livres';
+
 $livres = Livre::afficherTousLesLivres();
 
 if(isset($_POST['suppr'])) {
@@ -58,7 +60,7 @@ include_once 'partials/_head.php'; ?>
                         <div class="py-4 px-5 bg-white rounded-1">
                           <h3 class="fs-17 mb-1"><?=$livre['titre']?></h3>
                           <p class="text-muted mb-0">Edition: <?=$livre['dateParution']?></p>
-                          <div class="d-flex mt-3 gap-2">
+                          <div class="d-flex mt-3 gap-2 justfy-content-center">
                             <a href="#" class=" btn btn-info">Modifier</a>
                             <a href="/livres.php?id=<?=$livre['id']; ?>&suppr=true" class=" btn btn-danger">Supprimer</a>
                           </div>
