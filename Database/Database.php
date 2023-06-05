@@ -56,4 +56,12 @@ class Database
         return $item;
     }
 
+    // Supprimer un item
+    public static function supprimer(String $table, Int $id): void
+    {
+        $pdo = self::connect();
+        $query = $pdo->prepare("DELETE FROM $table WHERE id = :id");
+        $query->execute(['id' => $id]);
+    }
+
 }
