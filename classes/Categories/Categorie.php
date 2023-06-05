@@ -21,15 +21,15 @@ use App\Database;
     //Méthodes
 
     public function modifierCategorie($id):void{
-    
+        
     }
 
     public function afficherLesCategories():void{
-
+        Database::afficherTout('categorie');
     }
 
     public function afficherUneCategorie($id):void{
-
+        Database::afficherUn('categorie',$id);
     }
 
     public function ajouterCategorie():void{
