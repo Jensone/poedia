@@ -9,73 +9,70 @@ USE poedia;
 -- Auteurs (1)
 CREATE TABLE IF NOT EXISTS poedia.auteurs (
     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nom varchar(255) NOT NULL,
-    prenom varchar(255) NOT NULL,
+    nom varchar(255),
+    prenom varchar(255),
     nombreOeuvre JSON NULL,
-    dateNaissance date NOT NULL,
-    biographie text NOT NULL,
-    photo varchar(255) DEFAULT NULL
+    dateNaissance date,
+    nationalite varchar(255),
+    biographie text
 );
 
 -- Categories (2)
 CREATE TABLE IF NOT EXISTS poedia.categories (
     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nom varchar(255) NOT NULL,
-    description text NOT NULL
+    nom varchar(255),
+    description text
 );
 
--- Clients (3)
+-- clients (3)
 CREATE TABLE IF NOT EXISTS poedia.clients (
     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nom varchar(255) NOT NULL,
-    prenom varchar(255) NOT NULL,
-    dateNaissance date NOT NULL,
-    adresse varchar(255) NOT NULL,
-    codePostal varchar(255) NOT NULL,
-    ville varchar(255) NOT NULL,
-    telephone varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
-    photo varchar(255) DEFAULT NULL
+    nom varchar(255),
+    prenom varchar(255),
+    adresse varchar(255),
+    email varchar(255),
+    telephone varchar(255),
+    ville varchar(255)
 );
 
 -- Commandes (4)
 CREATE TABLE IF NOT EXISTS poedia.commandes (
     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    idClient int(11) NOT NULL,
-    idLivre int(11) NOT NULL,
-    dateDebut date NOT NULL,
-    dateRetour date NOT NULL,
+    idclients int(11),
+    idLivre int(11),
+    dateDebut date,
+    dateRetour date,
     statut BOOLEAN NOT NULL DEFAULT 0
 );
 
 -- Livres (5)
 CREATE TABLE IF NOT EXISTS poedia.livres (
     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    titre varchar(255) NOT NULL,
-    idAuteur int(11) NOT NULL,
-    idCategorie int(11) NOT NULL,
-    isbn varchar(255) NOT NULL,
-    dateParution int(11) NOT NULL,
-    nombrePages int(11) NOT NULL,
-    format int(11) NOT NULL,
-    exemplaireDisponible int(11) NOT NULL
+    titre varchar(255),
+    idAuteur int(11),
+    idCategorie int(11),
+    isbn varchar(255),
+    dateParution int(11),
+    nombrePages int(11),
+    format int(11),
+    exemplaireDisponible int(11)
 );
 
 -- Utilisateurs (6)
 CREATE TABLE IF NOT EXISTS poedia.utilisateurs (
     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nom varchar(255) NOT NULL,
-    prenom varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
-    password varchar(255) NOT NULL,
-    role varchar(255) NOT NULL
+    nom varchar(255),
+    prenom varchar(255),
+    email varchar(255),
+    password varchar(255),
+    role varchar(255)
 );
 
 -- Stock (7)
 CREATE TABLE IF NOT EXISTS poedia.stock (
     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    idLivre int(11) NOT NULL,
-    quantite int(11) NOT NULL
+    idLivre int(11),
+    quantite int(11)
 );
 
 -- Auteurs (1)
@@ -136,42 +133,41 @@ INSERT INTO categories (nom,description) VALUES ('Ode',"Poème lyrique divisé e
 
 -- Commandes (4)
 
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (1, 3, '2023-06-02', '2023-06-09', 1);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (2, 5, '2023-05-28', '2023-06-04', 0);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (3, 2, '2023-06-05', '2023-06-12', 1);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (4, 1, '2023-06-10', '2023-06-17', 0);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (5, 4, '2023-06-15', '2023-06-22', 1);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (1, 6, '2023-05-25', '2023-06-01', 1);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (3, 9, '2023-06-08', '2023-06-15', 0);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (2, 8, '2023-05-30', '2023-06-06', 1);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (5, 7, '2023-06-03', '2023-06-10', 0);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (4, 10, '2023-06-12', '2023-06-19', 1);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (3, 12, '2023-06-20', '2023-06-27', 0);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (2, 11, '2023-05-22', '2023-05-29', 1);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (5, 14, '2023-06-01', '2023-06-07', 0);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (1, 13, '2023-06-05', '2023-06-12', 1);
-INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (4, 16, '2023-06-10', '2023-06-17', 0);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (1, 3, '2023-06-02', '2023-06-09', 1);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (2, 5, '2023-05-28', '2023-06-04', 0);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (3, 2, '2023-06-05', '2023-06-12', 1);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (4, 1, '2023-06-10', '2023-06-17', 0);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (5, 4, '2023-06-15', '2023-06-22', 1);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (1, 6, '2023-05-25', '2023-06-01', 1);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (3, 9, '2023-06-08', '2023-06-15', 0);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (2, 8, '2023-05-30', '2023-06-06', 1);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (5, 7, '2023-06-03', '2023-06-10', 0);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (4, 10, '2023-06-12', '2023-06-19', 1);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (3, 12, '2023-06-20', '2023-06-27', 0);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (2, 11, '2023-05-22', '2023-05-29', 1);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (5, 14, '2023-06-01', '2023-06-07', 0);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (1, 13, '2023-06-05', '2023-06-12', 1);
+INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (4, 16, '2023-06-10', '2023-06-17', 0);
 
 -- Utilisateurs (5)
 
-INSERT INTO Utilisateur (nom, email, tel, motDePasse) VALUES 
-    ('John Doe', 'johndoe@example.com', '1234567890', 'password1'),
-    ('Jane Smith', 'janesmith@example.com', '9876543210', 'password2'),
-    ('Robert Johnson', 'robertjohnson@example.com', '5555555555', 'password3'),
-    ('Emily Davis', 'emilydavis@example.com', '1111111111', 'password4');
+INSERT INTO utilisateurs (nom, prenom, email, password, role) VALUES 
+    ('Dupont', 'Alice', 'a.dupont@gmail.com', '123456', 'admin'),
+    ('Smith', 'Emily', 'e.smith@gmail.com', '123456', 'admin'),
+    ('Garcia', 'Sofia', 's.garcia@gmail.com', '123456', 'admin');
 
--- Clients (6)
+-- clients (6)
 
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (1, 'Dubois', 'Jean', '12 Rue des Fleurs', 'jean.dubois@example.com', '0123456789', 'Paris');
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (2, 'Lefebvre', 'Emma', '8 Avenue du Soleil', 'emma.lefebvre@example.com', '0234567891', 'Marseille');
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (3, 'Martin', 'Lucas', '22 Rue de la Paix', 'lucas.martin@example.com', '0345678912', 'Lyon');
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (4, 'Dupont', 'Camille', '5 Boulevard des Arts', 'camille.dupont@example.com', '0456789123', 'Bordeaux');
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (5, 'Bernard', 'Chloé', '16 Avenue des Champs', 'chloe.bernard@example.com', '0567891234', 'Nice');
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (6, 'Robert', 'Maxime', '9 Rue du Commerce', 'maxime.robert@example.com', '0678912345', 'Toulouse');
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (7, 'Petit', 'Manon', '3 Rue de la Liberté', 'manon.petit@example.com', '0789123456', 'Lille');
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (8, 'Moreau', 'Léo', '11 Avenue Victor Hugo', 'leo.moreau@example.com', '0891234567', 'Strasbourg');
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (9, 'Roux', 'Léa', '7 Rue de la Gare', 'lea.roux@example.com', '0912345678', 'Nantes');
-INSERT INTO Client (id, nom, prenom, adresse, email, telephone, ville) VALUES (10, 'Fournier', 'Hugo', '4 Boulevard Voltaire', 'hugo.fournier@example.com', '0123456789', 'Rennes');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (1, 'Dubois', 'Jean', '12 Rue des Fleurs', 'jean.dubois@example.com', '0123456789', 'Paris');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (2, 'Lefebvre', 'Emma', '8 Avenue du Soleil', 'emma.lefebvre@example.com', '0234567891', 'Marseille');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (3, 'Martin', 'Lucas', '22 Rue de la Paix', 'lucas.martin@example.com', '0345678912', 'Lyon');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (4, 'Dupont', 'Camille', '5 Boulevard des Arts', 'camille.dupont@example.com', '0456789123', 'Bordeaux');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (5, 'Bernard', 'Chloé', '16 Avenue des Champs', 'chloe.bernard@example.com', '0567891234', 'Nice');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (6, 'Robert', 'Maxime', '9 Rue du Commerce', 'maxime.robert@example.com', '0678912345', 'Toulouse');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (7, 'Petit', 'Manon', '3 Rue de la Liberté', 'manon.petit@example.com', '0789123456', 'Lille');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (8, 'Moreau', 'Léo', '11 Avenue Victor Hugo', 'leo.moreau@example.com', '0891234567', 'Strasbourg');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (9, 'Roux', 'Léa', '7 Rue de la Gare', 'lea.roux@example.com', '0912345678', 'Nantes');
+INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (10, 'Fournier', 'Hugo', '4 Boulevard Voltaire', 'hugo.fournier@example.com', '0123456789', 'Rennes');
 
 -- Stock (7)
 
