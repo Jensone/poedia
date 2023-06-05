@@ -7,6 +7,7 @@
 namespace App;
 
 use App\Database;
+require_once './Config/database.php';
 
  class categorie{
 
@@ -24,7 +25,7 @@ use App\Database;
         
     }
 
-    public function afficherLescategories():void{
+    public static function afficherLescategories(){
         Database::afficherTout('categories');
     }
 
