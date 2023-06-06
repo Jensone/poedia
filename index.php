@@ -251,7 +251,7 @@ include_once 'partials/_head.php'; ?>
               </div>
               <?php }?>
               <div class="text-center mb-20">
-            <a href="auteur.php" class="fs-10 fw-semibold text-white mb-5">Voir tout les auteurs</a>
+            <a href="auteur.php?all" class="fs-10 fw-semibold text-white mb-5">Voir tout les auteurs</a>
           </div>
 
               <!-- <div class="col-12 col-md-6 col-lg-3">
