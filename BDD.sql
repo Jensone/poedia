@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS poedia.clients (
 -- Commandes (4)
 CREATE TABLE IF NOT EXISTS poedia.commandes (
     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    idclients int(11),
+    idClient int(11),
     idLivre int(11),
     dateDebut date,
     dateRetour date,
@@ -54,25 +54,18 @@ CREATE TABLE IF NOT EXISTS poedia.livres (
     isbn varchar(255),
     dateParution int(11),
     nombrePages int(11),
-    format int(11),
-    exemplaireDisponible int(11)
+    format varchar(25),
+    stock int(11)
 );
 
 -- Utilisateurs (6)
 CREATE TABLE IF NOT EXISTS poedia.utilisateurs (
     id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nom varchar(255),
-    prenom varchar(255),
+    nom varchar(25),
+    prenom varchar(25),
     email varchar(255),
-    password varchar(255),
-    role varchar(255)
-);
-
--- Stock (7)
-CREATE TABLE IF NOT EXISTS poedia.stock (
-    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    idLivre int(11),
-    quantite int(11)
+    password varchar(25),
+    role varchar(25)
 );
 
 -- Auteurs (1)
@@ -95,16 +88,16 @@ INSERT INTO auteurs (nom, prenom, nombreOeuvre, dateNaissance, nationalite, biog
 
 -- Livres (2)
 
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('The Lord of the Rings', 104, 203, '9780544003415', 1954, 1178, 2, 15);
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('To the Lighthouse', 105, 202, '9780156907392', 1927, 209, 1, 7);
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('Moby-Dick', 106, 201, '9780142437247', 1851, 704, 2, 20);
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('Crime and Punishment', 103, 204, '9780679734505', 1866, 671, 1, 8);
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('The Hobbit', 102, 203, '9780261103306', 1937, 366, 2, 12);
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('Jane Eyre', 101, 202, '9780141441146', 1847, 594, 3, 10);
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('The Alchemist', 101, 201, '9780062315007', 1988, 197, 1, 5);
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('The Odyssey', 102, 204, '9780140268867', 2022, 541, 2, 18);
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('Frankenstein', 103, 203, '9780486282114', 1818, 280, 3, 14);
-INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, exemplaireDisponible) VALUES ('The Great Gatsby', 104, 202, '9780743273565', 1925, 180, 1, 6);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('The Lord of the Rings', 4, 3, '9780544003415', 1954, 1178, 'Broché', 15);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('To the Lighthouse', 5, 2, '9780156907392', 1927, 209, 'Poche', 10);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('Moby-Dick', 6, 1, '9780142437247', 1851, 704, 'Broché', 10);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('Crime and Punishment', 3, 4, '9780679734505', 1866, 671, 'Broché', 15);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('The Hobbit', 2, 3, '9780261103306', 1937, 366, 'Poche', 10);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('Jane Eyre', 1, 2, '9780141441146', 1847, 594, 'Broché', 15);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('The Alchemist', 1, 1, '9780062315007', 1988, 197, 'Poche', 10);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('The Odyssey', 2, 4, '9780140268867', 2022, 541, 'Broché', 15);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('Frankenstein', 3, 3, '9780486282114', 1818, 280, 'Poche', 10);
+INSERT INTO livres (titre, idAuteur, idCategorie, isbn, dateParution, nombrePages, format, stock) VALUES ('The Great Gatsby', 4, 2, '9780743273565', 1925, 180, 'Broché', 15);
 
 -- Categories (3)
 
@@ -133,21 +126,21 @@ INSERT INTO categories (nom,description) VALUES ('Ode',"Poème lyrique divisé e
 
 -- Commandes (4)
 
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (1, 3, '2023-06-02', '2023-06-09', 1);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (2, 5, '2023-05-28', '2023-06-04', 0);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (3, 2, '2023-06-05', '2023-06-12', 1);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (4, 1, '2023-06-10', '2023-06-17', 0);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (5, 4, '2023-06-15', '2023-06-22', 1);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (1, 6, '2023-05-25', '2023-06-01', 1);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (3, 9, '2023-06-08', '2023-06-15', 0);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (2, 8, '2023-05-30', '2023-06-06', 1);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (5, 7, '2023-06-03', '2023-06-10', 0);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (4, 10, '2023-06-12', '2023-06-19', 1);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (3, 12, '2023-06-20', '2023-06-27', 0);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (2, 11, '2023-05-22', '2023-05-29', 1);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (5, 14, '2023-06-01', '2023-06-07', 0);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (1, 13, '2023-06-05', '2023-06-12', 1);
-INSERT INTO commandes (idclients, idLivre, dateDebut, dateRetour, statut) VALUES (4, 16, '2023-06-10', '2023-06-17', 0);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (1, 3, '2023-06-02', '2023-06-09', 1);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (2, 5, '2023-05-28', '2023-06-04', 0);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (3, 2, '2023-06-05', '2023-06-12', 1);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (4, 1, '2023-06-10', '2023-06-17', 0);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (5, 4, '2023-06-15', '2023-06-22', 1);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (1, 6, '2023-05-25', '2023-06-01', 1);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (3, 9, '2023-06-08', '2023-06-15', 0);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (2, 8, '2023-05-30', '2023-06-06', 1);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (5, 7, '2023-06-03', '2023-06-10', 0);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (4, 1, '2023-06-12', '2023-06-19', 1);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (3, 2, '2023-06-20', '2023-06-27', 0);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (2, 1, '2023-05-22', '2023-05-29', 1);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (5, 4, '2023-06-01', '2023-06-07', 0);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (1, 3, '2023-06-05', '2023-06-12', 1);
+INSERT INTO commandes (idClient, idLivre, dateDebut, dateRetour, statut) VALUES (4, 6, '2023-06-10', '2023-06-17', 0);
 
 -- Utilisateurs (5)
 
@@ -169,16 +162,6 @@ INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (
 INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (9, 'Roux', 'Léa', '7 Rue de la Gare', 'lea.roux@example.com', '0912345678', 'Nantes');
 INSERT INTO clients (id, nom, prenom, adresse, email, telephone, ville) VALUES (10, 'Fournier', 'Hugo', '4 Boulevard Voltaire', 'hugo.fournier@example.com', '0123456789', 'Rennes');
 
--- Stock (7)
-
-INSERT INTO stock (idLivre, quantite) VALUES 
-    (1, 10),
-    (2, 10),
-    (3, 10),
-    (4, 10),
-    (5, 10),
-    (6, 10);
-
 -- Ajout d'InnoDB
 
 ALTER TABLE livres ENGINE=InnoDB;
@@ -187,4 +170,10 @@ ALTER TABLE commandes ENGINE=InnoDB;
 ALTER TABLE clients ENGINE=InnoDB;
 ALTER TABLE auteurs ENGINE=InnoDB;
 ALTER TABLE utilisateurs ENGINE=InnoDB;
-ALTER TABLE stock ENGINE=InnoDB;
+
+-- Relation entre les tables
+
+ALTER TABLE livres ADD CONSTRAINT fk_idauteur FOREIGN KEY (idAuteur) REFERENCES auteurs(id);
+ALTER TABLE livres ADD CONSTRAINT fk_idcategorie FOREIGN KEY (idCategorie) REFERENCES categories(id);
+ALTER TABLE commandes ADD CONSTRAINT fk_idclient FOREIGN KEY (idClient) REFERENCES clients(id);
+ALTER TABLE commandes ADD CONSTRAINT fk_idlivre FOREIGN KEY (idLivre) REFERENCES livres(id);
