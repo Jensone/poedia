@@ -3,17 +3,17 @@
 use App\Database;
 
 require_once './Database/database.php';
-$auteurs = Database::Affichertout('auteurs');
+$auteurs = Database::afficherTout('auteurs');
 
-$categories = Database::Affichertout('categories');
+$categories = Database::afficherTout('categories');
 if (isset($_GET['detaille'])) {
     $id = $_GET['detaille'];
-    $auteur = Database::Afficherun('auteurs', $id);
-    $livreauts = Database::Affichertoutaut($id);
+    $auteur = Database::afficherUn('auteurs', $id);
+    // $livreauts = Database::afficherToutaut($id);
 }
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    Database::supprimerun('auteurs', $id);
+    Database::supprimer('auteurs', $id);
 }
 
 
