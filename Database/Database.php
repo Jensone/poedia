@@ -11,11 +11,11 @@ class Database
     // Connexion
     public static function connect(): \PDO
     {
-        // Variables de connexion
+        //Variables de connexion
         $host = 'localhost';
         $dbname = 'poedia';
         $user = 'root';
-        $password = 'root';
+        $password = '';
 
         try {
             $pdo = new \PDO('mysql:host=' . $host . ';dbname=' . $dbname . ';charset=utf8', $user, $password);
@@ -55,7 +55,7 @@ class Database
         $item = $query->fetchAll(\PDO::FETCH_ASSOC);
         return $item;
     }
-
+  
     // Supprimer un item
     public static function supprimer(String $table, Int $id): void
     {
@@ -63,5 +63,4 @@ class Database
         $query = $pdo->prepare("DELETE FROM $table WHERE id = :id");
         $query->execute(['id' => $id]);
     }
-
 }
