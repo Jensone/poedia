@@ -7,7 +7,7 @@ class Livre {
   - isbn: String
   - dateParution: int
   - nombrePages: int
-  - format: int
+  - format: String
   - exemplaireDisponible: Stock
   + afficherUnLivre(): Array
   + afficherTousLesLivres(): Array
@@ -26,7 +26,7 @@ class Auteur {
   - id: int
   - nom: String
   - prenom: String
-  - nombre_oeuvre:Livre
+  - nombreOeuvre:Livre
   - dateNaissance: Date
   - nationalite: String
   - biographi:Text

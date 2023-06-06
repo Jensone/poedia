@@ -1,123 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Page title</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="shuffle-for-bootstrap.png">
-</head>
-<body>
-    <div class="">
+<?php
+
+use App\Livre;
+use App\Database;
+
+require_once 'classes/Livre/Livre.php';
+require_once 'Database/Database.php';
+
+$title = 'Livres';
+
+$livres = Livre::afficherTousLesLivres();
+
+if(isset($_POST['suppr'])) {
+  $id = $_POST['suppr'];
+  $livre = new Livre($id);
+  $livre->supprimerLivre($id);
+}
+
+include_once 'partials/_head.php'; ?>
         
-      <section>
-        <nav class="navbar navbar-dark navbar-expand-lg bg-white py-5 py-lg-3 px-5">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              <img class="img-fluid" src="gradia-assets/logos/gradia-name-black.svg" alt="">
-            </a>
-            <div class="collapse navbar-collapse me-5 justify-content-center">
-              <ul class="navbar-nav">
-                <li class="nav-item p-5">
-                  <a class="nav-link d-inline-block p-0" href="#">
-                    <h3 class="fs-17 fw-medium text-secondary mb-0">Features</h3>
-                  </a>
-                </li>
-                <li class="nav-item p-5">
-                  <a class="nav-link d-inline-block p-0" href="#">
-                    <h3 class="fs-17 fw-medium text-secondary mb-0">Solutions</h3>
-                  </a>
-                </li>
-                <li class="nav-item p-5">
-                  <a class="nav-link d-inline-block p-0" href="#">
-                    <h3 class="fs-17 fw-medium text-secondary mb-0">Resources</h3>
-                  </a>
-                </li>
-                <li class="nav-item p-5">
-                  <a class="nav-link d-inline-block p-0" href="#">
-                    <h3 class="fs-17 fw-medium text-secondary mb-0">Pricing</h3>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="d-none d-lg-block">
-              <div class="rounded-3" style="padding:2px; background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%)">
-                <button class="btn btn-light px-4 py-3 rounded-1" type="button">
-                  <h4 class="fs-17 fw-medium text-secondary mb-0">Start Free Trial</h4>
-                </button>
+      <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">  
+        <?php include_once 'partials/_navigation.php'; ?>
+
+        <div class="overflow-hidden pt-32 pb-40">
+          <div class="container">
+            <div class="row align-items-center g-16">
+              <div class="col-12 col-md-12">
+                <div class="text-center">
+                  <h2 class="fs-7 text-white mb-6">Gestion des livres de la bibliothèque</h2>
+                  <button class="btn btn-secondary mw-sm w-100 px-10 py-5 mb-9" type="button">
+                    <div class="row justify-content-center align-items-center g-2">
+                      <div class="col-auto">
+                        <span class="fs-20 text-white text-uppercase fw-semibold mb-0" style="letter-spacing: 1px;">Ajouter un livre</span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="d-lg-none">
-              <button class="btn navbar-burger p-0">
-                <svg class="text-dark-light" width="51" height="51" viewbox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="56" height="56" rx="28" fill="currentColor"></rect>
-                  <path d="M37 32H19M37 24H19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-              </button>
             </div>
           </div>
-        </nav>
-        <div class="d-none navbar-menu position-fixed top-0 start-0 bottom-0 w-75 mw-xs" style="z-index: 9999;">
-          <div class="navbar-close navbar-backdrop position-fixed top-0 start-0 end-0 bottom-0 bg-dark" style="opacity: 75%;"></div>
-          <nav class="position-relative h-100 w-100 d-flex flex-column justify-content-between py-8 px-8 bg-white overflow-auto">
-            <div class="d-flex align-items-center">
-              <a class="me-auto h4 mb-0 text-decoration-none" href="#">
-                <img class="img-fluid" src="gradia-assets/logos/gradia-name-black.svg" alt="">
-              </a>
-              <a class="navbar-close" href="#">
-                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 18L18 6M6 6L18 18" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-              </a>
-            </div>
-            <div class="py-16">
-              <ul class="nav flex-column">
-                <li class="nav-item mb-12">
-                  <a class="nav-link d-inline-block p-0" href="#">
-                    <h3 class="fs-17 fw-medium text-secondary mb-0">Features</h3>
-                  </a>
-                </li>
-                <li class="nav-item mb-12">
-                  <a class="nav-link d-inline-block p-0" href="#">
-                    <h3 class="fs-17 fw-medium text-secondary mb-0">Solutions</h3>
-                  </a>
-                </li>
-                <li class="nav-item mb-12">
-                  <a class="nav-link d-inline-block p-0" href="#">
-                    <h3 class="fs-17 fw-medium text-secondary mb-0">Resources</h3>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block p-0" href="#">
-                    <h3 class="fs-17 fw-medium text-secondary mb-0">Pricing</h3>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <button class="btn btn-light px-4 py-3 w-100 mb-5 rounded-1" type="button">
-                <h4 class="fs-17 fw-medium text-secondary mb-0">Login</h4>
-              </button>
-              <div class="d-inline-block w-100 rounded-3" style="padding:2px; background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%)">
-                <button class="btn btn-light px-4 py-3 w-100 rounded-1" type="button">
-                  <h4 class="fs-17 fw-medium text-secondary mb-0">Start Free Trial</h4>
-                </button>
-              </div>
-            </div>
-          </nav>
         </div>
       </section>
-        
-      <div></div>
-        
-      <div class="row">
-        <div class="col-12 col-lg-6"></div>
-        <div class="col-12 col-lg-6"></div>
-        <div class="col-12 col-lg-6"></div>
-        <div class="col-12 col-lg-6"></div>
-      </div>
+
+      <section class="pt-28 pb-36  overflow-hidden">
+        <div class="container">
+          <div class="text-center mb-20">
+            <p class="d-inline-block fs-10 fw-semibold text-uppercase mb-6">
+              Les livres de la bibliothèque
+            </p>
+          </div>
+          <div class="container">
+            <div class="row g-6">
+              <?php foreach ($livres as $livre): ?>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
+                      <div class="d-flex justify-content-center">
+                        <img class="w-100" src="/src/assets/images/books.png" alt="<?=$livre['titre']?>">
+                      </div>
+                      <div class="position-absolute bottom-0 start-0 p-3 w-100">
+                        <div class="py-4 px-5 bg-white rounded-1">
+                          <h3 class="fs-17 mb-1"><?=$livre['titre']?></h3>
+                          <p class="text-muted mb-0">Auteur: <?=$livre['auteurPrenom'] . " " . $livre['auteurNom']?></p>
+                          <p class="text-muted mb-0">Edition: <?=$livre['dateParution']?></p>
+                          <p class="text-muted mb-0">Catégorie: <?=$livre['categorie']?></p>
+                          <p class="text-muted mb-0">Nb de pages: <?=$livre['nombrePages']?></p>
+                          <p class="text-muted mb-0">Stock dispo: <?=$livre['stock']?></p>
+                          <div class="d-flex mt-3 gap-2 justfy-content-center">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#show<?=$livre['id']; ?>">Modifier</button>
+                            <button class=" btn btn-danger" data-bs-toggle="modal" data-bs-target="#suppr<?=$livre['id']; ?>">Supprimer</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <!-- Modal modifications -->
+                <div class="modal fade" id="show<?=$livre['id']; ?>" tabindex="-1" aria-labelledby="show<?=$livre['id']; ?>" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="show<?=$livre['id']; ?>"><?=$livre['titre']?></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="" class="form" method="post" enctype="multipart/form-data">
+                          <label for="" class="form-label">Titre</label>
+                          <input type="text" name="titre" id="" class="form-control" value="<?=$livre['titre']?>">
+                          <label for="" class="form-label">ISBN</label>
+                          <input type="text" name="isbn" id="" class="form-control" value="<?=$livre['isbn']?>">
+                          <label for="" class="form-label">Sortie en</label>
+                          <input type="number" name="parution" id="" class="form-control" value="<?=$livre['dateParution']?>">
+                          <label for="" class="form-label">Pages totales</label>
+                          <input type="number" name="pages" id="" class="form-control" value="<?=$livre['nombrePages']?>">
+                          <label for="" class="form-label">Sélectionnez un format</label>
+                          <select class="form-select" aria-label="<?=$livre['format']?>">
+                            <option selected>Choisir</option>
+                            <option value="Broché">Broché</option>
+                            <option value="De proche">De proche</option>
+                            <option value="Encyclopédie">Encyclopédie</option>
+                          </select>
+                          <label for="" class="form-label">Exemplaires en stock</label>
+                          <input type="number" name="stock" id="" class="form-control" value="<?=$livre['stock']?>">
+                          <div class="mt-3">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn btn-primary">Enregister</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal suppression -->
+                <div class="modal fade" id="suppr<?=$livre['id']; ?>" tabindex="-2" aria-labelledby="suppr<?=$livre['id']; ?>" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="suppr<?=$livre['id']; ?>"><?=$livre['titre']?></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Cette action est irréversible ! Vous êtes sur le point de supprimer le livre <b><?=$livre['titre']?></b> de la bibliothèque. S'il s'agit d'une erreur, vous pouvez annuler cette action en cliquant sur le bouton "Annuler".</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <a href="/livres.php?suppr=<?=$livre['id']; ?>" class=" btn btn-danger">Oui, supprimer</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          </div>
+        </div>
+      </section>
         
       <section class="position-relative py-24 bg-black overflow-hidden">
         <img class="position-absolute bottom-0 start-0" src="gradia-assets/elements/footers/radial2.svg" alt="">
@@ -229,8 +243,5 @@
           </div>
         </div>
       </section>
-    </div>
-    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
+    
+      <?php include_once 'partials/_footer.php'; ?>
