@@ -6,11 +6,16 @@ require_once './Config/database.php';
 $auteurs = Database::Affichertout('auteurs');
 
 $categories = Database::Affichertout('categories');
-
-if(isset($_GET['detaille'])){
-    $id=$_GET['detaille'];
-$auteur = Database::Afficherun('auteurs',$id);
+if (isset($_GET['detaille'])) {
+    $id = $_GET['detaille'];
+    $auteur = Database::Afficherun('auteurs', $id);
+    $livreauts = Database::Affichertoutaut($id);
 }
+if (isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+    Database::supprimerun('auteurs', $id);
+}
+
 
 
 include_once 'partials/_head.php'; ?>
@@ -19,77 +24,126 @@ include_once 'partials/_head.php'; ?>
 
     <?php include_once 'partials/_navigation.php'; ?>
 </section>
-<?php if(isset($_GET['all'])){?>
+<?php if (isset($_GET['all'])) { ?>
     <section class="pt-28 pb-36 bg-secondary overflow-hidden">
-    <div class="container">
-        <div class="text-center mb-20">
-            <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">The team that made us successful</p>
-            <h2 class="fs-10 fw-semibold text-white mb-5">les auteurs</h2>
-        </div>
         <div class="container">
-            <div class="row g-6">
-                <?php foreach ($auteurs as $auteur) { ?>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
-                            <div class="d-flex justify-content-center">
-                                <img class="w-100" src="gradia-assets/images/teams/avatar-xl.png" alt="">
-                            </div>
-                            <div class="position-absolute bottom-0 start-0 p-3 w-100">
-                                <div class="py-4 px-5 bg-white rounded-1">
-                                    <h3 class="fs-17 mb-1"><?= $auteur['nom'] ?> <?= $auteur['prenom'] ?></h3>
-                                    <p class="text-muted mb-0">Nombre de livre: <?= $auteur['nombreOeuvre'] ?></p>
-                                    <p class="text-muted mb-0">Origine: <?= $auteur['nationalite'] ?></p>
-                                    <p class="text-muted mb-0"> Année: <?= $auteur['dateNaissance'] ?></p>
-                                    <a href="http:auteur.php?detaille=<?= $auteur['id'] ?>" class="fs-15 fw-semibold bg-color text-black mb-8">En savoir plus</a>
+            <div class="text-center mb-20">
+                <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">The team that made us successful</p>
+                <h2 class="fs-10 fw-semibold text-white mb-5">les auteurs</h2>
+            </div>
+            <div class="container">
+                <div class="row g-6">
+                    <?php foreach ($auteurs as $auteur) { ?>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
+                                <div class="d-flex justify-content-center">
+                                    <img class="w-100" src="gradia-assets/images/teams/avatar-xl.png" alt="">
+                                </div>
+                                <div class="position-absolute bottom-0 start-0 p-3 w-100">
+                                    <div class="py-4 px-5 bg-white rounded-1">
+                                        <h3 class="fs-17 mb-1"><?= $auteur['nom'] ?> <?= $auteur['prenom'] ?></h3>
+                                        <p class="text-muted mb-0">Nombre de livre: <?= $auteur['nombreOeuvre'] ?></p>
+                                        <p class="text-muted mb-0">Origine: <?= $auteur['nationalite'] ?></p>
+                                        <p class="text-muted mb-0"> Année: <?= $auteur['dateNaissance'] ?></p>
+                                        <a href="http:auteur.php?detaille=<?= $auteur['id'] ?>" class="fs-15 fw-semibold bg-color text-black mb-8">En savoir plus</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php } ?>
+                    <?php } ?>
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 <?php } ?>
 
-<?php if(isset($_GET['detaille'])){?>
+<?php if (isset($_GET['detaille'])) { ?>
 
-<section class="pt-28 pb-36 bg-secondary overflow-hidden">
-    <div class="container">
-        <div class="text-center mb-20">
-                    <h1 class="fs-10 fw-semibold text-white mb-5" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Auteur : <?= $auteur['nom'] ?> <?= $auteur['prenom'] ?></h1>
-        </div>
-        <div class="container  ">
-            <div class="row g-12">
-                
+    <section class="pt-28 pb-36 bg-secondary overflow-hidden">
+        <div class="container">
+            <div class="text-center mb-20">
+                <h1 class="fs-10 fw-semibold text-white mb-5" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Auteur : <?= $auteur['nom'] ?> <?= $auteur['prenom'] ?></h1>
+            </div>
+            <div class="container ml-15">
+                <div class="row g-12">
+
                     <div class="  ">
-                        <div class="auteur_dta d-flex">
+                        <div class="auteur_dta d-flex ">
                             <div class="d-flex justify-content-center">
                                 <img class="w-100" src="gradia-assets/images/teams/avatar-xl.png" alt="">
                             </div>
-                            <div class=" bottom-0 start-0 py-2 w-100">
+                            <div class=" bottom-0 start-0 py-2 w-50">
                                 <div class="py-4 px-5 bg-white rounded-1">
-                                    <h3 class="fs-17 mb-1"><?= $auteur['nom'] ?> <?= $auteur['prenom'] ?></h3>
-                                    <p class="text-muted mb-0">Nombre de livre: <?= $auteur['nombreOeuvre'] ?></p>
-                                    <p class="text-muted mb-0">Origine: <?= $auteur['nationalite'] ?></p>
-                                    <p class="text-muted mb-0"> Année: <?= $auteur['dateNaissance'] ?></p>
-                                    <p class="text-muted mb-0"> Description: <?= $auteur['biographie'] ?></p>
+                                    <div>
+                                        <h3 class="fs-17 mb-1"><?= $auteur['nom'] ?> <?= $auteur['prenom'] ?></h3>
+                                        <p class="text-muted mb-0">Nombre de livre: <?= $auteur['nombreOeuvre'] ?></p>
+                                        <p class="text-muted mb-0">Origine: <?= $auteur['nationalite'] ?></p>
+                                        <p class="text-muted mb-0"> Année: <?= $auteur['dateNaissance'] ?></p>
+                                        <p class="text-muted mb-0"> Description: <?= $auteur['biographie'] ?></p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <?php foreach ($livreauts as  $livreaut) { ?>
+
+                                            <div class="py-4 px-5 bg-white rounded-1">
+                                                <h3 class="fs-17 mb-1"><?= $livreaut['titre'] ?> </h3>
+                                                <p class="text-muted mb-0">Nombre de page: <?= $livreaut['nombrePages'] ?></p>
+                                                <p class="text-muted mb-0">Categorie: <?= $livreaut['nom'] ?></p>
+
+                                                <!-- <p class="text-muted mb-0"> Année: <?= $livreaut['dateNaissance'] ?></p> -->
+
+                                            </div>
+
+                                        <?php } ?>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                   <div class="d-flex mt-0 py-4">
-                   <a href="http:detaillaut.php?id=<?= $auteur['id'] ?>" class="fw-semibold bg-color text-white  "><button class="btn btn-warning">Modifier</button>   </a>
-                    <a href="http:detaillaut.php?id=<?= $auteur['id'] ?>" class=" fw-semibold bg-color text-white px-2"><button class="btn btn-danger">Supprimer</button></a>
-                   </div>
+                </div>
+
 
             </div>
-        </div>
-    </div>
-</section>
+            <div class="d-flex mt-0 py-4">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Modifier
+                </button>
 
-<?php }?>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <p class="modal-title fs-10" id="exampleModalLabel">Mofier l'auteur</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form  action="auteur.php?all" method="GET" class="d-flex flex-column p-3">
+                                    <input class="m-2" type="text" value="<?= $auteur['nom'] ?>">
+                                    <input class="m-2" type="text" value="<?= $auteur['nationalite'] ?>">
+                                    <input class="m-2" type="Date" value="<?= $auteur['dateNaissance'] ?>">
+                                    <textarea class="m-2" type="text" ><?= $auteur['biographie'] ?></textarea>
+                                <input type="submit" class="m-2" >
+                                <input type="hidden" class="m-2" value="<?= $auteur['id'] ?>" >
+
+                                </form>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <a href="http:auteur.php?delete=<?= $auteur['id'] ?>" class=" fw-semibold bg-color text-white px-2"><button class="btn btn-danger">Supprimer</button></a>
+            </div>
+
+        </div>
+        </div>
+        </div>
+    </section>
+
+<?php } ?>
 <section class="position-relative py-24 bg-black overflow-hidden">
     <img class="position-absolute bottom-0 start-0" src="gradia-assets/elements/footers/radial2.svg" alt="">
     <div class="position-relative container" style="z-index: 50;">
