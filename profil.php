@@ -53,7 +53,7 @@ $utilisateurs = Database::afficherTout('utilisateurs');
                     <div class="d-flex justify-content-center">
                         <img class="w-100" src="gradia-assets/images/teams/avatar-xl.png" alt="">
                     </div>
-                    
+
                 </div>
                 <div class="modal-body">
                     <ul class="list-group list-group-flush">
