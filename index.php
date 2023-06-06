@@ -4,7 +4,7 @@ use App\Database;
 require_once './Config/database.php';
 $categories = Database::afficherTout('categories');
 $auteurs = Database::afficherTout('auteurs');
-include_once 'partials/_head.php'; ?>
+include_once './partials/_head.php'; ?>
         
       <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">
         
@@ -87,12 +87,14 @@ include_once 'partials/_head.php'; ?>
             <div class="row justify-content-center mb-8 g-4">
               <?php foreach($categories as $categorie){?>
               <div class="col-auto justify-content-center">
+              <a href="./categorie.php?id=<?=$categorie['id']?>&cat=<?=$categorie['nom']?>" target="_blank" rel="noopener noreferrer">
                 <div class="d-inline-flex justify-content-center align-items-center p-4 bg-white" style="border-radius: 40px;">
                   <div>
                     <div class="inline-block me-3" style="width: 14px; height: 14px; border-radius: 40px; background: linear-gradient(98.24deg, #6CD5F7 0%, #F89D5C 50.52%, #5B6AF0 100%);"></div>
                   </div>
                   <h3 class="fs-17 fw-semibold mb-0 text-secondary"><?=$categorie['nom']?></h3>
                 </div>
+                </a>
               </div>
               <?php }?> 
             </div>
