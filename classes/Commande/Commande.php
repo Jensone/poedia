@@ -8,6 +8,8 @@ namespace App;
 
 use App\Database;
 
+require_once('./Database/Database.php');
+
 class Commande
 {
     // Propriétés
@@ -23,7 +25,7 @@ class Commande
 
     {
         $this->id = $id;
-        $this->client = $client;
+        $this->client = $client['nom'] ['prenom'];
         $this->livre = $livre;
         $this->dateDebut = $dateDebut;
         $this->dateRetour = $dateRetour;
@@ -31,6 +33,34 @@ class Commande
     }
 
     // Méthodes (Get et Setter)
+
+    public static function afficherUneCommande(Int $id): Array
+    {
+        $commande = Database::afficherUn('commandes', $id);
+        return $commande;
+    }
+
+public static function afficherToutesLesCommandes(): Array
+{
+    $db = new Database();
+    $query = $db->connect()->prepare("
+        SELECT commandes.id,
+            clients.id AS clientId,
+            livres.id AS livreId,
+            commandes.dateDebut,
+            commandes.dateRetour,
+            commandes.statut
+        FROM commandes
+        JOIN clients ON commandes.idClient = clients.id
+        JOIN livres ON commandes.idLivre = livres.id;
+    ");
+    $query->execute();
+    $commandes = $query->fetchAll(\PDO::FETCH_ASSOC);
+    return $commandes;
+
+    // Utilisez :
+  
+}
 
     public function getClient(): string
     {
