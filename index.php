@@ -1,7 +1,7 @@
 <?php
 namespace App;
 use App\Database;
-require_once './Config/database.php';
+require_once './Database/Database.php';
 $categories = Database::afficherTout('categories');
 $auteurs = Database::afficherTout('auteurs');
 include_once './partials/_head.php'; ?>
