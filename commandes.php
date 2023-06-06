@@ -81,15 +81,50 @@ include_once 'partials/_head.php'; ?>
         </div>
       </section>
         
-      <section class="pt-28 pb-36 bg-secondary overflow-hidden">
+      <section class="pt-28 pb-36 bg-light overflow-hidden">
         <div class="container">
           <div class="text-center mb-20">
             <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">The team that made us successful</p>
             <h2 class="fs-10 fw-semibold text-white mb-5">Les commandes </h2>
             <button class="btn btn-secondary mw-sm w-40 px-10 py-5 mb-90" type="button" href="#">Ajouter une commande</button>
-
           </div>
-          <div class="container">
+
+
+          
+<!-- TABLEAU COMMANDES -->
+BOUTON Recherche une commande
+
+<table class="table">
+<?php foreach($commandes as $commande){ ?>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Livres</th>
+      <th scope="col">Clients</th>
+      <th scope="col">Date d'emprunt</th>
+      <th scope="col">Date de retour</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Dépôt</th>
+      <th scope="col">Modifier</th>
+      <th scope="col">Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+       <td><?=$commande['id']?></td>
+       <td><?=$commande['idClient']?></td>
+       <td><?=$commande['idLivre']?></td>
+       <td><?=$commande['dateDebut']?></td>
+       <td><?=$commande['dateRetour']?></td>
+       <td><?=$commande['statut']?></td>
+       <td></td>
+       <td></td>
+    </tr>
+  </tbody>
+  <?php }?>
+</table>
+
+          <!-- <div class="container">
             <div class="row g-6">
               <?php foreach($commandes as $commande){ ?>
               <div class="col-12 col-md-6 col-lg-3">
@@ -119,7 +154,7 @@ include_once 'partials/_head.php'; ?>
 
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
         
       <section class="position-relative py-24 bg-black overflow-hidden">
@@ -237,7 +272,32 @@ include_once 'partials/_head.php'; ?>
 
 
       <!-- TO DO :
+
+    *DONE : coller code des cartes dans fichier tiers pour en garder une trace
+    * FAIRE UN PULL REQUEST
     * CREER CHEMIN boutton ajouter une commande
+    * CREER FORMULAIRE ajout de commande
     * AFFICHER le nom des clients et non des numéros (faire les relations dans bdd)
     * AFFICHER le titre des livres et non des numéros (faire les relations dans bdd)
+    * remplacer les cartes de commandes par un tableau (table dans boostrap)
+  
+    ** cases du tableau 
+    - id
+    - livre
+    - client
+    - date
+    - retour
+    - statut
+    - rendu / dépôt
+
+    + créer
+    + supprimer
+    + modifier (uniquement date de retour)
+    + rechercher une commande
+
+    * Faire la jointure avec la bdd : cf. branche git hub branche J. > Livres pour lier id à la bdd (récupérer le nom de l'auteur )
+
+    * définit en front le statut 
+    - 0 = en cours
+    - 1 = commande archivée
       -->
