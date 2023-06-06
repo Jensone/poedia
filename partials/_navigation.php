@@ -11,22 +11,17 @@
       <ul class="navbar-nav">
         <li class="nav-item p-5">
           <a class="nav-link d-inline-block p-0" href="#">
-            <h3 class="fs-17 fw-medium text-white mb-0">Features</h3>
+            <h3 class="fs-17 fw-medium text-white mb-0">Auteurs</h3>
           </a>
         </li>
         <li class="nav-item p-5">
           <a class="nav-link d-inline-block p-0" href="#">
-            <h3 class="fs-17 fw-medium text-white mb-0">Solutions</h3>
+            <h3 class="fs-17 fw-medium text-white mb-0">Livres</h3>
           </a>
         </li>
         <li class="nav-item p-5">
           <a class="nav-link d-inline-block p-0" href="#">
-            <h3 class="fs-17 fw-medium text-white mb-0">Resources</h3>
-          </a>
-        </li>
-        <li class="nav-item p-5">
-          <a class="nav-link d-inline-block p-0" href="#">
-            <h3 class="fs-17 fw-medium text-white mb-0">Pricing</h3>
+            <h3 class="fs-17 fw-medium text-white mb-0">Commandes</h3>
           </a>
         </li>
       </ul>
@@ -34,7 +29,7 @@
     <div class="d-none d-lg-block">
       <div class="bg-white bg-opacity-25 rounded-3">
         <button class="btn btn-transparent p-4 rounded-3" type="button">
-          <span class="fs-20 text-light text-uppercase mb-0" style="letter-spacing: 1px;">Start Free Trial</span>
+          <span class="fs-20 text-light text-uppercase mb-0" style="letter-spacing: 1px;">Se connecter</span>
         </button>
       </div>
     </div>
