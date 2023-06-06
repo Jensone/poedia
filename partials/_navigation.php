@@ -4,29 +4,24 @@
 <!-- Navigation générale -->
 <nav class="navbar navbar-dark navbar-expand-lg bg-transparent py-5 py-lg-3 px-5">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img class="img-fluid" src="gradia-assets/logos/gradia-name-white.svg" alt="">
+    <a class="navbar-brand" href="/index.php">
+      <img class="img-fluid" src="/src/assets/images/light.png" alt="Logo Poedia" width="180">
     </a>
     <div class="collapse navbar-collapse me-5 justify-content-center">
       <ul class="navbar-nav">
         <li class="nav-item p-5">
-          <a class="nav-link d-inline-block p-0" href="#">
-            <h3 class="fs-17 fw-medium text-white mb-0">Features</h3>
+          <a class="nav-link d-inline-block p-0" href="/livres.php">
+            <h3 class="fs-17 fw-medium text-white mb-0">Bibliothèque</h3>
           </a>
         </li>
         <li class="nav-item p-5">
-          <a class="nav-link d-inline-block p-0" href="#">
-            <h3 class="fs-17 fw-medium text-white mb-0">Solutions</h3>
+          <a class="nav-link d-inline-block p-0" href="/commandes.php">
+            <h3 class="fs-17 fw-medium text-white mb-0">Commandes</h3>
           </a>
         </li>
         <li class="nav-item p-5">
-          <a class="nav-link d-inline-block p-0" href="#">
-            <h3 class="fs-17 fw-medium text-white mb-0">Resources</h3>
-          </a>
-        </li>
-        <li class="nav-item p-5">
-          <a class="nav-link d-inline-block p-0" href="#">
-            <h3 class="fs-17 fw-medium text-white mb-0">Pricing</h3>
+          <a class="nav-link d-inline-block p-0" href="/clients.php">
+            <h3 class="fs-17 fw-medium text-white mb-0">Clients</h3>
           </a>
         </li>
       </ul>
