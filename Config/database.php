@@ -15,12 +15,12 @@ class Database
     // connexion
     public static function connect(): \PDO
     {
-        $host=getenv('HOST');
-        $dbname=getenv('DBNAME');
-        $user=getenv('USER');
-        $password=getenv('PASSWORD');
+        $host='localhost';
+        $dbname='poedia';
+        $user='root';
+        $password='';
         try {
-            $pdo = new \PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8'.$user,'',);
+            $pdo = new \PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8',$user,$password,);
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             return $pdo;
         } catch (\PDOException $e) {
@@ -38,16 +38,16 @@ class Database
 
     }
     //Recupérer des item
-    public static function Affichertout(string $table, int $id):Array{
+    public static function Affichertout(string $table):Array{
         $pdo=self::connect();
-        $query=$pdo->prepare("SELECT * FROM $table WHERE id=:id");
-        $query->execute(array('id'=>$id));
-        $item=$query->fetch(\PDO::FETCH_ASSOC);
+        $query=$pdo->prepare("SELECT * FROM $table");
+        $query->execute();
+        $item=$query->fetchAll(\PDO::FETCH_ASSOC);
       return $item;
   
       }
     // Récupere un item par une valeur
-    public static function Afficherparvaleur( string $table, string $valeur,){
+    public static function Afficherparvaleur( string $table, string $valeur){
         $pdo=self::connect();
         $query=$pdo->prepare("SELECT * FROM $table WHERE (CONVERT($valeur USING utf8)lIKE %$valeur% ");
         $query->execute();
