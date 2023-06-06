@@ -16,6 +16,8 @@ if(isset($_POST['suppr'])) {
   $livre->supprimerLivre($id);
 }
 
+var_dump($livres);
+
 include_once 'partials/_head.php'; ?>
         
       <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">  
@@ -59,7 +61,11 @@ include_once 'partials/_head.php'; ?>
                       <div class="position-absolute bottom-0 start-0 p-3 w-100">
                         <div class="py-4 px-5 bg-white rounded-1">
                           <h3 class="fs-17 mb-1"><?=$livre['titre']?></h3>
+                          <p class="text-muted mb-0">Auteur: <?=$livre['auteurPrenom'] . " " . $livre['auteurNom']?></p>
                           <p class="text-muted mb-0">Edition: <?=$livre['dateParution']?></p>
+                          <p class="text-muted mb-0">Catégorie: <?=$livre['categorie']?></p>
+                          <p class="text-muted mb-0">Nb de pages: <?=$livre['nombrePages']?></p>
+                          <p class="text-muted mb-0">Stock dispo: <?=$livre['stock']?></p>
                           <div class="d-flex mt-3 gap-2 justfy-content-center">
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#show<?=$livre['id']; ?>">Modifier</button>
                             <button class=" btn btn-danger" data-bs-toggle="modal" data-bs-target="#suppr<?=$livre['id']; ?>">Supprimer</button>
