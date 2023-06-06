@@ -4,7 +4,7 @@
 <!-- Navigation générale -->
 <nav class="navbar navbar-dark navbar-expand-lg bg-transparent py-5 py-lg-3 px-5">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="./index.php">
       <img class="img-fluid" src="gradia-assets/logos/gradia-name-white.svg" alt="">
     </a>
     <div class="collapse navbar-collapse me-5 justify-content-center">
