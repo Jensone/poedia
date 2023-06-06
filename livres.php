@@ -11,8 +11,9 @@ $title = 'Livres';
 $livres = Livre::afficherTousLesLivres();
 
 if(isset($_POST['suppr'])) {
-  $id = $_POST['id'];
-  Database::supprimer('livres', $id);
+  $id = $_POST['suppr'];
+  $livre = new Livre($id);
+  $livre->supprimerLivre($id);
 }
 
 include_once 'partials/_head.php'; ?>
@@ -51,38 +52,73 @@ include_once 'partials/_head.php'; ?>
             <div class="row g-6">
               <?php foreach ($livres as $livre): ?>
                 <div class="col-12 col-md-6 col-lg-3">
-                  <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
                       <div class="d-flex justify-content-center">
-                        <img class="w-100" src="src/assets/images/cover.jpg" alt="<?=$livre['titre']?>">
+                        <img class="w-100" src="/src/assets/images/cover-poedia.png" alt="<?=$livre['titre']?>">
                       </div>
                       <div class="position-absolute bottom-0 start-0 p-3 w-100">
                         <div class="py-4 px-5 bg-white rounded-1">
                           <h3 class="fs-17 mb-1"><?=$livre['titre']?></h3>
                           <p class="text-muted mb-0">Edition: <?=$livre['dateParution']?></p>
                           <div class="d-flex mt-3 gap-2 justfy-content-center">
-                            <a href="#" class=" btn btn-info">Modifier</a>
-                            <a href="/livres.php?id=<?=$livre['id']; ?>&suppr=true" class=" btn btn-danger">Supprimer</a>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#show<?=$livre['id']; ?>">Modifier</button>
+                            <button class=" btn btn-danger" data-bs-toggle="modal" data-bs-target="#suppr<?=$livre['id']; ?>">Supprimer</button>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </button>
                 </div>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Modal modifications -->
+                <div class="modal fade" id="show<?=$livre['id']; ?>" tabindex="-1" aria-labelledby="show<?=$livre['id']; ?>" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="show<?=$livre['id']; ?>"><?=$livre['titre']?></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        ...
+                        <form action="" class="form" method="post" enctype="multipart/form-data">
+                          <label for="" class="form-label">Titre</label>
+                          <input type="text" name="titre" id="" class="form-control" value="<?=$livre['titre']?>">
+                          <label for="" class="form-label">ISBN</label>
+                          <input type="text" name="isbn" id="" class="form-control" value="<?=$livre['isbn']?>">
+                          <label for="" class="form-label">Sortie en</label>
+                          <input type="number" name="parution" id="" class="form-control" value="<?=$livre['dateParution']?>">
+                          <label for="" class="form-label">Pages totales</label>
+                          <input type="number" name="pages" id="" class="form-control" value="<?=$livre['nombrePages']?>">
+                          <label for="" class="form-label">Sélectionnez un format</label>
+                          <select class="form-select" aria-label="<?=$livre['format']?>">
+                            <option selected>Choisir</option>
+                            <option value="Broché">Broché</option>
+                            <option value="De proche">De proche</option>
+                            <option value="Encyclopédie">Encyclopédie</option>
+                          </select>
+                          <label for="" class="form-label">Exemplaires en stock</label>
+                          <input type="number" name="stock" id="" class="form-control" value="<?=$livre['stock']?>">
+                          <div class="mt-3">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn btn-primary">Enregister</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal suppression -->
+                <div class="modal fade" id="suppr<?=$livre['id']; ?>" tabindex="-2" aria-labelledby="suppr<?=$livre['id']; ?>" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="suppr<?=$livre['id']; ?>"><?=$livre['titre']?></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Cette action est irréversible ! Vous êtes sur le point de supprimer le livre <b><?=$livre['titre']?></b> de la bibliothèque. S'il s'agit d'une erreur, vous pouvez annuler cette action en cliquant sur le bouton "Annuler".</p>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <a href="/livres.php?suppr=<?=$livre['id']; ?>" class=" btn btn-danger">Oui, supprimer</a>
                       </div>
                     </div>
                   </div>

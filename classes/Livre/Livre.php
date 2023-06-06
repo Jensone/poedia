@@ -96,6 +96,11 @@ class Livre
 
     }
 
+    public function supprimerLivre(Int $id): void
+    {
+        Database::supprimer('livres', $id);
+    }
+
     // Getters et Setters
     public function getId(): Int
     {
