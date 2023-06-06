@@ -47,10 +47,10 @@ class Database
     }
 
     // Récupérer des items par une valeur
-    public static function afficherUnParValeur(String $table, String $valeur): Array
+    public static function afficherToutParValeur(String $table, String $colonne, String $valeur): Array
     {
         $pdo = self::connect();
-        $query = $pdo->prepare("SELECT * FROM $table WHERE (CONVERT($valeur USING utf8) LIKE %$valeur%)");
+        $query = $pdo->prepare("SELECT * FROM $table WHERE $colonne LIKE '%$valeur%'");
         $query->execute();
         $item = $query->fetchAll(\PDO::FETCH_ASSOC);
         return $item;

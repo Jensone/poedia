@@ -50,7 +50,8 @@ class Livre
         $query = $db->connect()->prepare("
             SELECT livres.id,
                 livres.titre,
-                auteurs.nom AS auteur,
+                auteurs.nom AS auteurNom,
+                auteurs.prenom AS auteurPrenom,
                 categories.nom AS categorie,
                 livres.isbn,
                 livres.dateParution,
