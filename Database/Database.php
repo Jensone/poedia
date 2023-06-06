@@ -18,8 +18,7 @@ class Database
         $password = '';
 
         try {
-            $pdo = new \PDO('mysql:host=' . $host . ';dbname=' . $dbname . ';charset=utf8',
-        $user, $password);
+            $pdo = new \PDO('mysql:host=' . $host . ';dbname=' . $dbname . ';charset=utf8', $user, $password);
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             return $pdo;
         } catch (\PDOException $e) {
@@ -37,7 +36,7 @@ class Database
         return $item;
     }
 
-    // Récupérer des item
+    // Récupérer des items
     public static function afficherTout(String $table): Array
     {
         $pdo = self::connect();
@@ -47,14 +46,21 @@ class Database
         return $items;
     }
 
-    // Récupérer un item par une valeur
-    public static function afficherUnParValeur(String $table, Int $valeur): Array
+    // Récupérer des items par une valeur
+    public static function afficherToutParValeur(String $table, String $colonne, String $valeur): Array
     {
         $pdo = self::connect();
-        $query = $pdo->prepare("SELECT * FROM $table WHERE  (COVERT($valeur USING utf8) LIKE %$valeur%)");
+        $query = $pdo->prepare("SELECT * FROM $table WHERE $colonne LIKE '%$valeur%'");
         $query->execute();
         $item = $query->fetchAll(\PDO::FETCH_ASSOC);
         return $item;
     }
-
+  
+    // Supprimer un item
+    public static function supprimer(String $table, Int $id): void
+    {
+        $pdo = self::connect();
+        $query = $pdo->prepare("DELETE FROM $table WHERE id = :id");
+        $query->execute(['id' => $id]);
+    }
 }
