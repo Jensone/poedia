@@ -50,7 +50,7 @@
   <nav class="position-relative h-100 w-100 d-flex flex-column justify-content-between py-8 px-8 bg-white overflow-auto">
     <div class="d-flex align-items-center">
       <a class="me-auto h4 mb-0 text-decoration-none" href="#">
-        <img class="img-fluid" src="gradia-assets/logos/gradia-name-black.svg" alt="">
+        <img class="img-fluid" src="/src/assets/images/light.png" alt="Logo Poedia" width="180">
       </a>
       <a class="navbar-close" href="#">
         <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
