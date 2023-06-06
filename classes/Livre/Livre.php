@@ -8,7 +8,7 @@ namespace App;
 
 use App\Database;
 
-require_once('./Config/database.php');
+require_once('./Database/Database.php');
 
 class Livre
 {
