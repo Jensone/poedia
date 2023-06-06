@@ -1,7 +1,7 @@
 
 <?php
 use App\Database;
-require_once './Database/database.php';
+require_once './Database/Database.php';
 $auteur=Database::Affichertout('auteurs');
 $categories=Database::Affichertout('categories');
 
