@@ -38,22 +38,44 @@ class Livre
     }
 
     // Méthodes
-    public function afficherUnLivre(Int $id): Array
+    public static function afficherUnLivre(Int $id): Array
     {
-
+        $livre = Database::afficherUn('livres', $id);
         return $livre;
     }
 
     public static function afficherTousLesLivres(): Array
     {
-        $livres = Database::afficherTout('livres');
+        $db = new Database();
+        $query = $db->connect()->prepare("
+            SELECT livres.id,
+                livres.titre,
+                auteurs.nom AS auteur,
+                categories.nom AS categorie,
+                livres.isbn,
+                livres.dateParution,
+                livres.nombrePages,
+                livres.format,
+                livres.stock
+            FROM livres
+            JOIN auteurs ON livres.idAuteur = auteurs.id
+            JOIN categories ON livres.idCategorie = categories.id;
+        ");
+        $query->execute();
+        $livres = $query->fetchAll(\PDO::FETCH_ASSOC);
         return $livres;
+
+        // Utilisez :
+        // $livres = Livre::afficherTousLesLivres();
     }
 
-    public function afficherLesLivresParTitre(): Array
+    public static function afficherLesLivresParTitre($titre): Array
     {
-
+        $livreTitre = Database::afficherToutParValeur('livres', 'titre', $titre);
         return $livreTitre;
+
+        // Utilisez : ('hobbit' est un exemple)
+        // $livresTitre = Livre::afficherLesLivresParTitre('hobbit');
     }
 
     public function afficherLesLivresParAuteur(): Array
@@ -62,10 +84,31 @@ class Livre
         return $livreAuteur;
     }
 
-    public function afficherLesLivresParCatégorie(): Array
+    public static function afficherLesLivresParCategorie($categorie): Array
     {
+        $db = new Database();
+        $query = $db->connect()->prepare("
+            SELECT livres.id,
+                livres.titre,
+                auteurs.nom AS auteur,
+                categories.nom AS categorie,
+                livres.isbn,
+                livres.dateParution,
+                livres.nombrePages,
+                livres.format,
+                livres.stock
+            FROM livres
+            JOIN auteurs ON livres.idAuteur = auteurs.id
+            JOIN categories ON livres.idCategorie = categories.id
+            WHERE categories.nom = :categorie;
+        ");
+        $query->execute(['categorie' => $categorie]);
+        $livresCategorie = $query->fetchAll(\PDO::FETCH_ASSOC);
+        return $livresCategorie;
 
-        return $livreCategorie;
+        // Utilisez : ('mythe' est un exemple)
+        // $livresCategories = Livre::afficherLesLivresParCategorie('mythe');
+        // var_dump($livresCategories);
     }
 
     public function afficherLesLivresParISBN(): Array
