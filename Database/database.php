@@ -47,23 +47,7 @@ class Database
     $item = $query->fetchAll(\PDO::FETCH_ASSOC);
     return $item;
   }
-  //Recupérer des item
-  public static function Affichertoutaut(int $id): array
-  {
-    $pdo = self::connect();
-    $query = $pdo->prepare("SELECT l.titre,l.nombrePages,l.id,l.idAuteur,l.idCategorie,c.nom FROM livres l  JOIN (SELECT * FROM categories)c on l.idCategorie=c.id WHERE l.idAuteur=$id");
-    $query->execute();
-    $item = $query->fetchAll(\PDO::FETCH_ASSOC);
-    return $item;
-  }
-  // supprimer un item 
-  public static function supprimerun(string $table, int $id)
-  {
-    $pdo = self::connect();
-    $query = $pdo->prepare("DELETE FROM $table WHERE id=:id");
-    $query->execute(array('id' => $id));
-    header('location:./auteur.php?all');
-  }
+ 
   // Récupere un item par une valeur
   public static function Afficherparvaleur(string $table, string $valeur)
   {
