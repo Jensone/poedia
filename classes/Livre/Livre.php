@@ -50,7 +50,8 @@ class Livre
         $query = $db->connect()->prepare("
             SELECT livres.id,
                 livres.titre,
-                auteurs.nom AS auteur,
+                auteurs.nom AS auteurNom,
+                auteurs.prenom AS auteurPrenom,
                 categories.nom AS categorie,
                 livres.isbn,
                 livres.dateParution,
@@ -78,11 +79,11 @@ class Livre
         // $livresTitre = Livre::afficherLesLivresParTitre('hobbit');
     }
 
-    // public function afficherLesLivresParAuteur(): Array
-    // {
+    public function afficherLesLivresParAuteur(): Array
+    {
 
-    //     return $livreAuteur;
-    // }
+        return $livreAuteur;
+    }
 
     public static function afficherLesLivresParCategorie($categorie): Array
     {
@@ -111,23 +112,23 @@ class Livre
         // var_dump($livresCategories);
     }
 
-    // public function afficherLesLivresParISBN(): Array
-    // {
+    public function afficherLesLivresParISBN(): Array
+    {
 
-    //     return $livreISBN;
-    // }
+        return $livreISBN;
+    }
 
-    // public function afficherLesLivresParDateParution(): Array
-    // {
+    public function afficherLesLivresParDateParution(): Array
+    {
 
-    //     return $livreDateParution;
-    // }
+        return $livreDateParution;
+    }
 
-    // public function afficherLesLivresDisponibles(): Array
-    // {
+    public function afficherLesLivresDisponibles(): Array
+    {
 
-    //     return $livreDisponible;
-    // }
+        return $livreDisponible;
+    }
 
     public function ajouterLivre(): void
     {
