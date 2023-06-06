@@ -13,9 +13,9 @@ class Database
     {
         //Variables de connexion
         $host = 'localhost';
-        $dbname = 'poedia';
-        $user = 'root';
-        $password = '';
+        $dbname = 'wydn5601_poedia';
+        $user = 'wydn5601_poedia';
+        $password = '^]OgR1UtIIip';
 
         try {
             $pdo = new \PDO('mysql:host=' . $host . ';dbname=' . $dbname . ';charset=utf8', $user, $password);
