@@ -59,6 +59,16 @@ class Database
         return $items;
     }
 
+     // Récupérer des items par une valeur
+     public static function afficherToutParValeur(String $table, String $colonne, String $valeur): Array
+     {
+         $pdo = self::connect();
+         $query = $pdo->prepare("SELECT * FROM $table WHERE $colonne LIKE '%$valeur%'");
+         $query->execute();
+         $item = $query->fetchAll(\PDO::FETCH_ASSOC);
+         return $item;
+     }
+
     //Supprimer un item 
     public static function supprimer(Int $id, String $table){
         $pdo = self::connect();

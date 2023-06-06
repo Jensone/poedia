@@ -21,7 +21,7 @@ require_once './Config/database.php';
 
     //Méthodes
 
-    public function modifiercategorie($id):void{
+    public static function modifiercategorie($id):void{
         
     }
 
@@ -29,15 +29,15 @@ require_once './Config/database.php';
         Database::afficherTout('categories');
     }
 
-    public function afficherUnecategorie($id):void{
-        Database::afficherUn('categories',$id);
+    public static function afficherUnecategorie($id):Array{
+       return Database::afficherUn('categories',$id);
     }
 
-    public function ajoutercategorie():void{
+    // public function static ajoutercategorie():void{
 
-    }
+    // }
 
-    public function supprimercategorie($id):void{
+    public static function supprimercategorie($id):void{
         Database::supprimer($id,'categories');
     }
 
