@@ -15,7 +15,7 @@ class Utilisateur
         private $id;
         private $nom;
         private $email;
-        private $tel;
+        private $role;
         private $motDePasse;
         
     // Méthodes
@@ -23,7 +23,7 @@ class Utilisateur
         int $id,
         string $nom,
         string $email,
-        string $tel,
+        string $role,
         string $motDePasse
     )
     {
@@ -34,34 +34,34 @@ class Utilisateur
     
         $this->email = $email;
     
-        $this->tel = $tel;
+        $this->role = $role;
     
         $this->motDePasse = $motDePasse;
      
     }
 
 
-    public function seConnecter($id,$nom,$email,$tel,$motDePasse): void
+    public function seConnecter($id,$nom,$email,$role,$motDePasse): void
     {
         
     }
     
-    public function seDeconnecter($id,$nom,$email,$tel,$motDePasse): void
+    public function seDeconnecter($id,$nom,$email,$role,$motDePasse): void
     {
         
     }
     
-    public function creerCompte($id,$nom,$email,$tel,$motDePasse): void
+    public function creerCompte($id,$nom,$email,$role,$motDePasse): void
     {
         
     }
     
-    public function editCompte($id,$nom,$email,$tel,$motDePasse): void
+    public function editCompte($id,$nom,$email,$role,$motDePasse): void
     {
         
     }
     
-    public function supprCompte($id,$nom,$email,$tel,$motDePasse): void
+    public function supprCompte($id,$nom,$email,$role,$motDePasse): void
     {
         
     }
@@ -84,7 +84,7 @@ public function getEmail(): string
 
 public function getTel(): string
 {
-    return $this->tel;
+    return $this->role;
 }
 
 public function getMotDePasse(): string
@@ -108,9 +108,9 @@ public function setEmail($email): void
     $this->email = $email;
 }
 
-public function setTel($tel): void
+public function setTel($role): void
 {
-    $this->tel = $tel;
+    $this->role = $role;
 }
 
 public function setMotDePasse($motDePasse): void
