@@ -1,6 +1,6 @@
 <?php
 /**
- * Classe Database 
+ * Classe Database
  * Cette classe représente la connexion à la base de données
  */
 
@@ -11,50 +11,50 @@ class Database
     // Connexion
     public static function connect(): \PDO
     {
-          //Variables de connexion
-          $host = getenv('HOST');
-          $dbname = getenv('DBNAME');
-          $user = getenv('USER');
-          $password = getenv('PASSWORD');
+        //Variables de connexion
+        $host = 'localhost';
+        $dbname = 'poedia';
+        $user = 'root';
+        $password = '';
 
         try {
-            $pdo = new \PDO('mysql:host=localhost;dbname=bibl', 'root', '',);
+            $pdo = new \PDO('mysql:host=' . $host . ';dbname=' . $dbname . ';charset=utf8',
+        $user, $password);
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             return $pdo;
         } catch (\PDOException $e) {
             echo 'Erreur de connexion : ' . $e->getMessage();
         }
     }
-    //Récupèrer un item
-    public static function afficherUn(String $table, Int $id):Array
+
+    // Récupérer un item
+    public static function afficherUn(String $table, Int $id): Array
     {
         $pdo = self::connect();
         $query = $pdo->prepare("SELECT * FROM $table WHERE id = :id");
-        $qurey = $query->execute();
+        $query->execute(['id' => $id]);
         $item = $query->fetchAll(\PDO::FETCH_ASSOC);
         return $item;
     }
 
-    //Récupèrer des items
-   
-    public static function afficherTout(String $table):Array
+    // Récupérer des item
+    public static function afficherTout(String $table): Array
     {
         $pdo = self::connect();
         $query = $pdo->prepare("SELECT * FROM $table");
-        $qurey = $query->execute();
-        $item = $query->fetchAll(\PDO::FETCH_ASSOC);
-        return $item;
+        $query->execute();
+        $items = $query->fetchAll(\PDO::FETCH_ASSOC);
+        return $items;
     }
-    //Récupèrer un item par une valeur
-    public static function afficherUnParValeur(String $table, String $valeur):Array
+
+    // Récupérer un item par une valeur
+    public static function afficherUnParValeur(String $table, Int $valeur): Array
     {
         $pdo = self::connect();
-    $query = $pdo->prepare("SELECT * FROM $table WHERE (CONVERT($valeur USING utf8)LIKE %$valeur%)");
-        $qurey = $query->execute();
+        $query = $pdo->prepare("SELECT * FROM $table WHERE  (COVERT($valeur USING utf8) LIKE %$valeur%)");
+        $query->execute();
         $item = $query->fetchAll(\PDO::FETCH_ASSOC);
         return $item;
     }
-    
-
 
 }

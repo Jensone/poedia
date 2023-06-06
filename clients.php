@@ -6,7 +6,7 @@ require_once './Database/Database.php';
 
 include_once './partials/_head.php';
 
-$client = Database::afficherTout('client');
+$clients = Database::afficherTout('clients');
 
 
 
@@ -20,10 +20,10 @@ $client = Database::afficherTout('client');
 <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">
     <div class="container">
         <div class="row g-6 d-flex justify-content-center">
-            <?php foreach ($client as $clients) { ?>
+            <?php foreach ($clients as $client) { ?>
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
-                        <button type="button" class="btn btn-lightess rounded-2 border-style-none p-3" data-bs-toggle="modal" data-bs-target="#client<?= $clients['id'] ?>">
+                        <button type="button" class="btn btn-lightess rounded-2 border-style-none p-3" data-bs-toggle="modal" data-bs-target="#client<?= $client['id'] ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 576 512">
                                 <path fill="currentColor" d="M288 144a110.94 110.94 0 0 0-31.24 5a55.4 55.4 0 0 1 7.24 27a56 56 0 0 1-56 56a55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z" />
                             </svg>
@@ -33,8 +33,8 @@ $client = Database::afficherTout('client');
                         </div>
                         <div class="position-absolute bottom-0 start-0 p-3 w-100">
                             <div class="py-4 px-5 bg-white rounded-1">
-                                <p class="text-muted mb-0">Nom: <?= $clients['nom'] ?></p>
-                                <p class="text-muted mb-0">Prénom: <?= $clients['prenom'] ?></p>
+                                <p class="text-muted mb-0">Nom: <?= $client['nom'] ?></p>
+                                <p class="text-muted mb-0">Prénom: <?= $client['prenom'] ?></p>
                             </div>
                         </div>
                     </div>
@@ -44,9 +44,9 @@ $client = Database::afficherTout('client');
     </div>
 </section>
 
-<?php foreach ($client as $clients) : ?>
+<?php foreach ($clients as $client) : ?>
 
-    <div class="modal fade" id="client<?= $clients['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="client<?= $client['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -58,22 +58,22 @@ $client = Database::afficherTout('client');
                 <div class="modal-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            Nom : <?= $clients['nom'] ?>
+                            Nom : <?= $client['nom'] ?>
                         </li>
                         <li class="list-group-item">
-                            Prenom : <?= $clients['prenom'] ?>
+                            Prenom : <?= $client['prenom'] ?>
                         </li>
                         <li class="list-group-item">
-                            Adresse : <?= $clients['adresse'] ?>
+                            Adresse : <?= $client['adresse'] ?>
                         </li>
                         <li class="list-group-item">
-                            Email : <?= $clients['email'] ?>
+                            Email : <?= $client['email'] ?>
                         </li>
                         <li class="list-group-item">
-                            Telephone : <?= $clients['telephone'] ?>
+                            Telephone : <?= $client['telephone'] ?>
                         </li>
                         <li class="list-group-item">
-                            Ville : <?= $clients['ville'] ?>
+                            Ville : <?= $client['ville'] ?>
                         </li>
                     </ul>
                 </div>
