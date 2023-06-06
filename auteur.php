@@ -6,14 +6,32 @@ require_once './Database/database.php';
 $auteurs = Database::Affichertout('auteurs');
 
 $categories = Database::Affichertout('categories');
+ //Recupérer des item
+ function Affichertoutaut(int $id): array
+ {
+   $pdo = Database::connect();
+   $query = $pdo->prepare("SELECT l.titre,l.nombrePages,l.id,l.idAuteur,l.idCategorie,c.nom FROM livres l  JOIN (SELECT * FROM categories)c on l.idCategorie=c.id WHERE l.idAuteur=$id");
+   $query->execute();
+   $item = $query->fetchAll(\PDO::FETCH_ASSOC);
+   return $item;
+ }
+ // supprimer un item 
+ function supprimerun(string $table, int $id)
+ {
+   $pdo = Database::connect();
+   $query = $pdo->prepare("DELETE FROM $table WHERE id=:id");
+   $query->execute(array('id' => $id));
+   header('location:./auteur.php?all');
+ }
+
 if (isset($_GET['detaille'])) {
     $id = $_GET['detaille'];
     $auteur = Database::Afficherun('auteurs', $id);
-    $livreauts = Database::Affichertoutaut($id);
+    $livreauts = Affichertoutaut($id);
 }
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    Database::supprimerun('auteurs', $id);
+    supprimerun('auteurs', $id);
 }
 
 
