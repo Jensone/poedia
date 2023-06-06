@@ -6,4 +6,10 @@
 
  namespace App;
 
- class Livre
+
+ class Auteur{
+    //Propiétés
+
+
+    //Methodes
+ }
