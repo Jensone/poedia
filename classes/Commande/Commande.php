@@ -19,7 +19,7 @@ class Commande
     private $statut;
 
     // Constructeur
-    public function __construct(int $id, string $client, string $livre, string $debutDate, string $dateRetour, bool $statut)
+    public function __construct(int $id, string $client, string $livre, string $dateDebut, string $dateRetour, bool $statut)
 
     {
         $this->id = $id;

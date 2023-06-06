@@ -101,7 +101,7 @@ include_once 'partials/_head.php'; ?>
                     <div class="py-4 px-5 bg-white rounded-1">
                     
                         <p class="text-muted mb-0">Commande : <?=$commande['id']?></p>
-                        <p class="text-muted mb-0">Initiée par : <?=$commande['idclients']?></p>
+                        <p class="text-muted mb-0">Initiée par : <?=$commande['idClient']?></p>
                         <p class="text-muted mb-0">Livre(s) : <?=$commande['idLivre']?></p>
                         <p class="text-muted mb-0"> Date d'emprunt : <?=$commande['dateDebut']?></p>
                         <p class="text-muted mb-0"> Date de retour : <?=$commande['dateRetour']?></p>
