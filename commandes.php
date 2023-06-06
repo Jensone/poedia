@@ -86,16 +86,14 @@ include_once 'partials/_head.php'; ?>
           <div class="text-center mb-20">
             <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">The team that made us successful</p>
             <h2 class="fs-10 fw-semibold text-white mb-5">Les commandes </h2>
+            <input class="form-control mr-sm-2 rounded" type="search" placeholder="Recherche une commande" aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
             <button class="btn btn-secondary mw-sm w-40 px-10 py-5 mb-90" type="button" href="#">Ajouter une commande</button>
           </div>
-
-
           
 <!-- TABLEAU COMMANDES -->
-BOUTON Recherche une commande
 
 <table class="table">
-<?php foreach($commandes as $commande){ ?>
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -110,7 +108,7 @@ BOUTON Recherche une commande
     </tr>
   </thead>
   <tbody>
-    <tr>
+  <?php foreach($commandes as $commande){ ?>
        <td><?=$commande['id']?></td>
        <td><?=$commande['idClient']?></td>
        <td><?=$commande['idLivre']?></td>
@@ -119,7 +117,7 @@ BOUTON Recherche une commande
        <td><?=$commande['statut']?></td>
        <td></td>
        <td></td>
-    </tr>
+  
   </tbody>
   <?php }?>
 </table>
@@ -300,4 +298,8 @@ BOUTON Recherche une commande
     * définit en front le statut 
     - 0 = en cours
     - 1 = commande archivée
+
+    * modifier la largeur de la barre de recherche (20% largeur)
+
+    * remplacer la boucle foreach pour que toutes les autres lignes en gras disparaissent
       -->
