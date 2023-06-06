@@ -2,7 +2,7 @@
 
 use App\Database;
 
-require_once './Config/database.php';
+require_once './Database/database.php';
 $auteurs = Database::Affichertout('auteurs');
 
 $categories = Database::Affichertout('categories');
