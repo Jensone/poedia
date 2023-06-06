@@ -54,7 +54,7 @@ include_once 'partials/_head.php'; ?>
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden" style="background: linear-gradient(90deg, rgba(108,213,246,1 ) 0%, rgba(248,157,92,1) 50%, rgba(91,106,240,1) 100%);">
                       <div class="d-flex justify-content-center">
-                        <img class="w-100" src="/src/assets/images/cover-poedia.png" alt="<?=$livre['titre']?>">
+                        <img class="w-100" src="/src/assets/images/books.png" alt="<?=$livre['titre']?>">
                       </div>
                       <div class="position-absolute bottom-0 start-0 p-3 w-100">
                         <div class="py-4 px-5 bg-white rounded-1">
