@@ -1,7 +1,7 @@
-
 <?php
+
 require_once './classes/Controller/AuthorController.php';
-$authors=getAll();
+
 include_once 'partials/_head.php'; ?>
         
       <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">
