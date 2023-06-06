@@ -40,10 +40,10 @@ include_once 'partials/_head.php'; ?>
         </div>
       </section>
 
-      <section class="pt-28 pb-36 bg-secondary overflow-hidden">
+      <section class="pt-28 pb-36  overflow-hidden">
         <div class="container">
           <div class="text-center mb-20">
-            <p class="d-inline-block fs-10 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            <p class="d-inline-block fs-10 fw-semibold text-uppercase mb-6">
               Les livres de la bibliothèque
             </p>
           </div>
