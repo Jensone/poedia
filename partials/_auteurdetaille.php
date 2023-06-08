@@ -13,7 +13,7 @@
                         <div class="d-flex justify-content-center">
                             <img class="w-100" src="gradia-assets/images/teams/avatar-xl.png" alt="">
                         </div>
-                        <div class=" bottom-0 mt-123 start-0 py-2 w-50"  style=" 
+                        <div class=" bottom-0 mt-123 start-0 py-2 w-50" style=" 
 	margin-top: 7rem;
                         	justify-content: space-around;
 	align-items: center;">
@@ -27,25 +27,32 @@
                                 </div>
                                 <div class="">
                                     <h3>Les livres ecit par l'auteurs</h3>
-                                    <?php foreach ($livreauts as  $livre) { ?>
+                                    <?php if (count($livreauts) == 0) { ?>
+                                        <p class="fs-12 text-center">L'auteur n'a pas encore ajouté de livre.</p>
 
-                                        <div class="col-12 col-md-6 col-lg-3 " style="width:20rem;height:10rem ">
-                                            <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden">
-                                                <div class="d-flex justify-content-center">
-                                                </div>
-                                                <div class="position-absolute bottom-0 start-0 p-3 w-100">
-                                                    <div class="py-4 px-5 bg-white rounded-1">
-                                                        <h3 class="fs-17 mb-1"><?= $livre['titre'] ?></h3>
-                                                        <p class="text-muted mb-0">Edition: <?= $livre['dateParution'] ?></p>
-                                                        <p class="text-muted mb-0">Catégorie: <?= $livre['categorieNom'] ?></p>
-                                                        <p class="text-muted mb-0">Nb de pages: <?= $livre['nombrePages'] ?></p>
-                                                        <p class="text-muted mb-0">Stock dispo: <?= $livre['stock'] ?></p>
+                                    <?php } else { ?>
+                                       <div class="d-flex flex-wrap">
+                                       <?php foreach ($livreauts as  $livre) { ?>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+<div class="col-12 col-md-6 col-lg-3 " style="width:15rem;height:10rem ">
+    <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden">
+        <div class="d-flex justify-content-center">
+        </div>
+        <div class="position-absolute bottom-0 start-0 p-3 w-100">
+            <div class="py-4 px-5 bg-white rounded-1">
+                <h3 class="fs-17 mb-1"><?= $livre['titre'] ?></h3>
+                <p class="text-muted mb-0">Edition: <?= $livre['dateParution'] ?></p>
+                <p class="text-muted mb-0">Catégorie: <?= $livre['categorieNom'] ?></p>
+                <p class="text-muted mb-0">Nb de pages: <?= $livre['nombrePages'] ?></p>
+                <p class="text-muted mb-0">Stock dispo: <?= $livre['stock'] ?></p>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php } ?>
+                                       </div>
                                     <?php } ?>
 
 
