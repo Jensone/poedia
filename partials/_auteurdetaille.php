@@ -7,11 +7,16 @@
             <div class="row g-12">
 
                 <div class="  ">
-                    <div class="auteur_dta d-flex ">
+                    <div class="auteur_dta d-flex " style="	justify-content: space-evenly;
+	align-items: center;
+ ">
                         <div class="d-flex justify-content-center">
                             <img class="w-100" src="gradia-assets/images/teams/avatar-xl.png" alt="">
                         </div>
-                        <div class=" bottom-0 start-0 py-2 w-50">
+                        <div class=" bottom-0 mt-123 start-0 py-2 w-50"  style=" 
+	margin-top: 7rem;
+                        	justify-content: space-around;
+	align-items: center;">
                             <div class="py-4 px-5 bg-white rounded-1">
                                 <div>
                                     <h3 class="fs-17 mb-1"><?= $auteur['nom'] ?> <?= $auteur['prenom'] ?></h3>
@@ -20,19 +25,30 @@
                                     <p class="text-muted mb-0"> Année: <?= $auteur['dateNaissance'] ?></p>
                                     <p class="text-muted mb-0"> Description: <?= $auteur['biographie'] ?></p>
                                 </div>
-                                <div class="d-flex">
-                                    <?php foreach ($livreauts as  $livreaut) { ?>
+                                <div class="">
+                                    <h3>Les livres ecit par l'auteurs</h3>
+                                    <?php foreach ($livreauts as  $livre) { ?>
 
-                                        <div class="py-4 px-5 bg-white rounded-1">
-                                            <h3 class="fs-17 mb-1"><?= $livreaut['titre'] ?> </h3>
-                                            <p class="text-muted mb-0">Nombre de page: <?= $livreaut['nombrePages'] ?></p>
-                                            <p class="text-muted mb-0">Categorie: <?= $livreaut['nom'] ?></p>
+                                        <div class="col-12 col-md-6 col-lg-3 " style="width:20rem;height:10rem ">
+                                            <div class="position-relative d-flex flex-column justify-content-end h-100 rounded-1 overflow-hidden">
+                                                <div class="d-flex justify-content-center">
+                                                </div>
+                                                <div class="position-absolute bottom-0 start-0 p-3 w-100">
+                                                    <div class="py-4 px-5 bg-white rounded-1">
+                                                        <h3 class="fs-17 mb-1"><?= $livre['titre'] ?></h3>
+                                                        <p class="text-muted mb-0">Edition: <?= $livre['dateParution'] ?></p>
+                                                        <p class="text-muted mb-0">Catégorie: <?= $livre['categorieNom'] ?></p>
+                                                        <p class="text-muted mb-0">Nb de pages: <?= $livre['nombrePages'] ?></p>
+                                                        <p class="text-muted mb-0">Stock dispo: <?= $livre['stock'] ?></p>
 
-                                            <!-- <p class="text-muted mb-0"> Année: <?= $livreaut['dateNaissance'] ?></p> -->
-
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                     <?php } ?>
+
+
                                 </div>
                             </div>
 
@@ -43,7 +59,9 @@
 
 
         </div>
-        <div class="d-flex mt-0 py-4">
+        <div class="d-flex mt-0 py-4" style="	justify-content: center;
+	align-items: center;
+ ">
             <a href="auteur.php?modifier=<?= $auteur['id'] ?>" class="btn btn-primary" data-bs-target="#exampleModal">
                 Modifier
             </a>
@@ -53,5 +71,5 @@
 
 
     </div>
-    
+
 </section>
