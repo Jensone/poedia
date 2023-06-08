@@ -42,6 +42,13 @@ $utilisateurs = Database::afficherTout('utilisateurs');
             <?php } ?>
         </div>
     </div>
+
+    <div class="mt-5 d-flex align-center">
+        <a href="./inscriptionAdmin.php">
+            <button type="button" class="btn btn-secondary rounded-5">S'inscrire en tant qu'admin</button>
+        </a>
+    </div>
+
 </section>
 
 <?php foreach ($utilisateurs as $utilisateur) : ?>
@@ -77,13 +84,15 @@ $utilisateurs = Database::afficherTout('utilisateurs');
                     <button type="button" class="btn btn-secondary rounded-5" data-bs-dismiss="modal">Fermer</button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-5"><?php header('Location: projet-book-app/connectProfil.php'); ?></button>
+                    <a href="./connectProfil.php">
+                        <button type="button" class="btn btn-secondary rounded-5">Connection</button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    
+
 
 <?php endforeach; ?>
 

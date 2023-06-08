@@ -63,4 +63,6 @@ class Database
         $query = $pdo->prepare("DELETE FROM $table WHERE id = :id");
         $query->execute(['id' => $id]);
     }
+
+   
 }

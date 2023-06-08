@@ -1,22 +1,38 @@
 <?php
 
+namespace App;
+
 use App\Database;
+use App\Utilisateur;
 
 require_once './Database/Database.php';
+require_once './classes/Utilisateur/Utilisateur.php';
 
-if (isset($_POST['submit'])) {
-    $nom = isset($_POST['nom']) ? $_POST['nom'] : "";
-    $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : "";
-    $email = isset($_POST['email']) ? $_POST['email'] : "";
-    $motdepasse = isset($_POST['motdepasse']) ? $_POST['motdepasse'] : "";
+class UserController extends Utilisateur
+{
 
-    if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($motdepasse)) {
+public static function addUser(): void
+    {
+
+        $pdo = Database::connect();
+
+        $query = $pdo->prepare(
+            'INSERT INTO utilisateurs (nom, prenom, email, password, role) VALUES ( :nom, :prenom, :email, :password, :role)');
         
-        header('Location: projet-book-app/profil.php');
+        $query->bindValue(':nom', $_POST['nom'], \PDO::PARAM_STR);
+        $query->bindValue(':prenom', $_POST['prenom'], \PDO::PARAM_STR);
+        $query->bindValue(':email', $_POST['email'], \PDO::PARAM_STR);
+        $query->bindValue(':password', $_POST['password'], \PDO::PARAM_STR);
+        $query->bindValue(':role', $_POST['role'], \PDO::PARAM_STR);       
 
-    } else {
-        echo "Veuillez remplir tous les champs.";
+        $query->execute();
+
+        header('Location: ./projet-book-app/profil.php');
     }
+
+
 }
 
-?>
+
+    ?>
+

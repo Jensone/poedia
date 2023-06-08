@@ -45,10 +45,7 @@ class Utilisateur
     }
 
 
-    public function seConnecter($nom,$prenom, $email,$role,$motDePasse): void
-    {
-        
-    }
+    
     
     public function seDeconnecter($id,$nom,$email,$role,$motDePasse): void
     {
