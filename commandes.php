@@ -111,7 +111,7 @@ include_once 'partials/_head.php'; ?>
     <div class="text-center mb-20">
       <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">The team that made us successful</p>
       <h2 class="fs-10 fw-semibold text-white mb-5">Les commandes </h2>
-      <input class="form-control rounded" type="search" placeholder="Recherche une commande" aria-label="Search">
+      <input class="form-control rounded m-2" type="search" placeholder="Recherche une commande" aria-label="Search">
       <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Rechercher</button>
       <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalForm">Ajouter une commande</button>
       <!-- Modal formulaire ajouter une commande -->
