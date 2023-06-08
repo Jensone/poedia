@@ -241,7 +241,6 @@ include_once 'partials/_head.php'; ?>
                   <div class="position-absolute bottom-0 start-0 p-3 w-100">
                     <div class="py-4 px-5 bg-white rounded-1">
                       <h3 class="fs-17 mb-1"><?=$auteur[$i]['nom']?> <?=$auteur[$i]['prenom']?></h3>
-                      <p class="text-muted mb-0">Nombre de livre: <?=$auteur[$i]['nombreOeuvre']?></p>
                       <p class="text-muted mb-0">Origine: <?=$auteur[$i]['nationalite']?></p>
                       <p class="text-muted mb-0"> Année: <?=$auteur[$i]['dateNaissance']?></p>
 
