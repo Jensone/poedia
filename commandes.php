@@ -113,7 +113,52 @@ include_once 'partials/_head.php'; ?>
       <h2 class="fs-10 fw-semibold text-white mb-5">Les commandes </h2>
       <input class="form-control rounded" type="search" placeholder="Recherche une commande" aria-label="Search">
       <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Rechercher</button>
-      <button class="btn btn-secondary mw-sm w-40 px-10 py-5 mb-90" type="button" href="#">Ajouter une commande</button>
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalForm">Ajouter une commande</button>
+      <!-- Modal formulaire ajouter une commande -->
+      <div class="modal fade" id="exampleModalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg row gy-100 gx-40">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLabel">Ajouter une commande</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form class="row gy-2 gx-3 align-items-center">
+              <div class="col-auto">
+                <input type="text" class="form-control" id="autoSizingInput" placeholder="Nom du client">
+              </div>
+              <div class="col-auto">
+                <label class="visually-hidden" for="autoSizingInputGroup">Prénom</label>
+                <div class="input-group">
+                 
+                  <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Prénom du client">
+                </div>
+              </div>
+              <div class="col-auto">
+                <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+                <select class="form-select" id="autoSizingSelect">
+                  <option selected>Livre...</option>
+                  <option value="idLivre">
+                    <?php foreach ($livres as $livre) { ?><?= $livre['id']?></option>
+                  <option value="2">Two</option>
+                  <?php } ?>
+                </select>
+              </div>
+              <div class="col-auto">
+                Date d'emprunt <input type="date" class="form-control" id="autoSizingInput" placeholder="date de l'emprunt">
+              </div>
+              <div class="col-auto">
+                Date de retour <input type="date" class="form-control" id="autoSizingInput" placeholder="date de l'emprunt">
+              </div>
+            </form>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
+              <button type="button" class="btn btn-primary">Valider</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- TABLEAU COMMANDES -->
@@ -142,14 +187,14 @@ include_once 'partials/_head.php'; ?>
           <td><?= $commande['statut'] ?></td>
 
           <td>
-          <!-- bouton Dépôt -->
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-            <svg width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- bouton Dépôt -->
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModalDepot">
+              <svg width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 20H19M12 4V16M12 16L15 13M12 16L9 13" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </button>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModalDepot" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -169,14 +214,14 @@ include_once 'partials/_head.php'; ?>
           </td>
 
           <td>
-          <!-- bouton Modifier -->
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M21.1213 2.70705C19.9497 1.53548 18.0503 1.53547 16.8787 2.70705L15.1989 4.38685L7.29289 12.2928C7.16473 12.421 7.07382 12.5816 7.02986 12.7574L6.02986 16.7574C5.94466 17.0982 6.04451 17.4587 6.29289 17.707C6.54127 17.9554 6.90176 18.0553 7.24254 17.9701L11.2425 16.9701C11.4184 16.9261 11.5789 16.8352 11.7071 16.707L19.5556 8.85857L21.2929 7.12126C22.4645 5.94969 22.4645 4.05019 21.2929 2.87862L21.1213 2.70705ZM18.2929 4.12126C18.6834 3.73074 19.3166 3.73074 19.7071 4.12126L19.8787 4.29283C20.2692 4.68336 20.2692 5.31653 19.8787 5.70705L18.8622 6.72357L17.3068 5.10738L18.2929 4.12126ZM15.8923 6.52185L17.4477 8.13804L10.4888 15.097L8.37437 15.6256L8.90296 13.5112L15.8923 6.52185ZM4 7.99994C4 7.44766 4.44772 6.99994 5 6.99994H10C10.5523 6.99994 11 6.55223 11 5.99994C11 5.44766 10.5523 4.99994 10 4.99994H5C3.34315 4.99994 2 6.34309 2 7.99994V18.9999C2 20.6568 3.34315 21.9999 5 21.9999H16C17.6569 21.9999 19 20.6568 19 18.9999V13.9999C19 13.4477 18.5523 12.9999 18 12.9999C17.4477 12.9999 17 13.4477 17 13.9999V18.9999C17 19.5522 16.5523 19.9999 16 19.9999H5C4.44772 19.9999 4 19.5522 4 18.9999V7.99994Z" fill="#000000"/>
+            <!-- bouton Modifier -->
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModalModifier">
+              <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M21.1213 2.70705C19.9497 1.53548 18.0503 1.53547 16.8787 2.70705L15.1989 4.38685L7.29289 12.2928C7.16473 12.421 7.07382 12.5816 7.02986 12.7574L6.02986 16.7574C5.94466 17.0982 6.04451 17.4587 6.29289 17.707C6.54127 17.9554 6.90176 18.0553 7.24254 17.9701L11.2425 16.9701C11.4184 16.9261 11.5789 16.8352 11.7071 16.707L19.5556 8.85857L21.2929 7.12126C22.4645 5.94969 22.4645 4.05019 21.2929 2.87862L21.1213 2.70705ZM18.2929 4.12126C18.6834 3.73074 19.3166 3.73074 19.7071 4.12126L19.8787 4.29283C20.2692 4.68336 20.2692 5.31653 19.8787 5.70705L18.8622 6.72357L17.3068 5.10738L18.2929 4.12126ZM15.8923 6.52185L17.4477 8.13804L10.4888 15.097L8.37437 15.6256L8.90296 13.5112L15.8923 6.52185ZM4 7.99994C4 7.44766 4.44772 6.99994 5 6.99994H10C10.5523 6.99994 11 6.55223 11 5.99994C11 5.44766 10.5523 4.99994 10 4.99994H5C3.34315 4.99994 2 6.34309 2 7.99994V18.9999C2 20.6568 3.34315 21.9999 5 21.9999H16C17.6569 21.9999 19 20.6568 19 18.9999V13.9999C19 13.4477 18.5523 12.9999 18 12.9999C17.4477 12.9999 17 13.4477 17 13.9999V18.9999C17 19.5522 16.5523 19.9999 16 19.9999H5C4.44772 19.9999 4 19.5522 4 18.9999V7.99994Z" fill="#000000" />
               </svg>
             </button>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModalModifier" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -196,9 +241,9 @@ include_once 'partials/_head.php'; ?>
           </td>
 
           <td>
-          <!-- bouton Supprimer -->
+            <!-- bouton Supprimer -->
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModalSupprimer">
               <svg height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 7H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M6 10L7.70141 19.3578C7.87432 20.3088 8.70258 21 9.66915 21H14.3308C15.2974 21 16.1257 20.3087 16.2986 19.3578L18 10" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -206,7 +251,7 @@ include_once 'partials/_head.php'; ?>
               </svg>
             </button>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModalSupprimer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -381,9 +426,11 @@ include_once 'partials/_head.php'; ?>
     * FAIRE UN PULL REQUEST
     * CREER CHEMIN boutton ajouter une commande
     * CREER FORMULAIRE ajout de commande qui comprend les champs suivants :
-        - NOM du client
-        - PRENOM du client
-        - titre livres(s)
+        - idClient:
+            - NOM du client
+            - PRENOM du client
+        - idLivre:
+            - titre livre
         - dates d'emprunt (début et retour)
         - valider
     * AFFICHER le nom des clients et non des numéros (faire les relations dans bdd)
