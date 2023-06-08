@@ -17,7 +17,7 @@ class Utilisateur
         private $prenom;
         private $email;
         private $role;
-        private $motDePasse;
+        private $password;
         
     // Méthodes
     public function __construct(
@@ -26,7 +26,7 @@ class Utilisateur
         string $prenom,
         string $email,
         string $role,
-        string $motDePasse
+        string $password
     )
     {
 
@@ -40,7 +40,7 @@ class Utilisateur
     
         $this->role = $role;
     
-        $this->motDePasse = $motDePasse;
+        $this->password = $password;
      
     }
 
@@ -71,9 +71,9 @@ public function getTel(): string
     return $this->role;
 }
 
-public function getMotDePasse(): string
+public function getPassword(): string
 {
-    return $this->motDePasse;
+    return $this->password;
 }
 
 
@@ -102,9 +102,9 @@ public function setRole($role): void
     $this->role = $role;
 }
 
-public function setMotDePasse($motDePasse): void
+public function setPassword($password): void
 {
-    $this->motDePasse = $motDePasse;
+    $this->password = $password;
 }
 }
 
