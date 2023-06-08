@@ -80,12 +80,13 @@
 public static function Affichertoutaut($id): array
 {
     $pdo = Database::connect();
-    $query = $pdo->prepare("SELECT livres.id, `titre`, `idAuteur`, `idCategorie`, `isbn`, `dateParution`, `nombrePages`, `format`, `stock`,auteurs.nom FROM `livres`
-    LEFT JOIN auteurs ON livres.idAuteur = auteurs.id
+    $query = $pdo->prepare("SELECT livres.id, `titre`, `idAuteur`, `idCategorie`, `isbn`, `dateParution`, `nombrePages`, `format`, `stock`,auteurs.nom,categories.nom as categorieNom FROM `livres`
+    LEFT JOIN auteurs ON livres.idAuteur = auteurs.id LEFT JOIN categories ON categories.id=livres.idCategorie
     WHERE livres.idAuteur=$id");
     $query->execute();
     $item = $query->fetchAll(\PDO::FETCH_ASSOC);
     return $item;
+    var_dump($item);
 }
 // supprimer un item 
 public static function supprimerun(string $table, int $id)
@@ -102,7 +103,7 @@ public static function ajoutAteur(): void
 
     // On prépare la requête d'insertion
     $query = $pdo->prepare(
-        'INSERT INTO auteurs ( nom, prenom, dateNaissance,nationalite, biographie) VALUES ( :nom, :prenom,:dateNaissance, :nationalite, :biographie )'
+        'INSERT INTO auteurs ( nom, prenom, dateNaissance,nationalite, biographie) VALUES ( :nom, :prenom,:dateNaissance, :nationalite, :biographie)'
     );
     // On fait matcher les valeurs du formulaire avec les paramètres de la requête
     $query->bindValue(':nom', $_POST['nom'], \PDO::PARAM_STR);
@@ -111,10 +112,11 @@ public static function ajoutAteur(): void
     $query->bindValue(':nationalite', $_POST['nationalite'], \PDO::PARAM_STR);
     $query->bindValue(':biographie', $_POST['biographie'], \PDO::PARAM_INT);
 
+
     // On exécute la requête
     $query->execute();
 
-    header('Location: /index.php');
+    header('location:./auteur.php?all');
 }
 // la fonction qui permet la modification des auteur
 public static function modifierauteur()
