@@ -9,12 +9,12 @@ include_once './partials/_head.php';
 $utilisateurs = Database::afficherTout('utilisateurs');
 
 
-
 ?>
 
 <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">
 
     <?php include_once 'partials/_navigation.php'; ?>
+
 </section>
 
 <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">
@@ -46,6 +46,8 @@ $utilisateurs = Database::afficherTout('utilisateurs');
 
 <?php foreach ($utilisateurs as $utilisateur) : ?>
 
+
+
     <div class="modal fade" id="utilisateur<?= $utilisateur['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -72,11 +74,17 @@ $utilisateurs = Database::afficherTout('utilisateurs');
                     </ul>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-5" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary rounded-5" data-bs-dismiss="modal">Fermer</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-5"><?php header('Location: projet-book-app/connectProfil.php'); ?></button>
                 </div>
             </div>
         </div>
     </div>
+
+    
+
 <?php endforeach; ?>
 
 <?php include_once './partials/_footer.php'; ?>

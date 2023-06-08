@@ -14,6 +14,7 @@ class Utilisateur
     
         private $id;
         private $nom;
+        private $prenom;
         private $email;
         private $role;
         private $motDePasse;
@@ -22,6 +23,7 @@ class Utilisateur
     public function __construct(
         int $id,
         string $nom,
+        string $prenom,
         string $email,
         string $role,
         string $motDePasse
@@ -31,6 +33,8 @@ class Utilisateur
         $this->id = $id;
     
         $this->nom = $nom;
+
+        $this->prenom = $prenom;
     
         $this->email = $email;
     
@@ -41,27 +45,12 @@ class Utilisateur
     }
 
 
-    public function seConnecter($id,$nom,$email,$role,$motDePasse): void
+    public function seConnecter($nom,$prenom, $email,$role,$motDePasse): void
     {
         
     }
     
     public function seDeconnecter($id,$nom,$email,$role,$motDePasse): void
-    {
-        
-    }
-    
-    public function creerCompte($id,$nom,$email,$role,$motDePasse): void
-    {
-        
-    }
-    
-    public function editCompte($id,$nom,$email,$role,$motDePasse): void
-    {
-        
-    }
-    
-    public function supprCompte($id,$nom,$email,$role,$motDePasse): void
     {
         
     }
@@ -75,6 +64,11 @@ class Utilisateur
 public function getNom(): string
 {
     return $this->nom;
+}
+
+public function getPrenom(): string
+{
+    return $this->prenom;
 }
 
 public function getEmail(): string
@@ -103,12 +97,17 @@ public function setNom($nom): void
     $this->nom = $nom;
 }
 
+public function setPrenom($prenom): void
+{
+    $this->prenom = $prenom;
+}
+
 public function setEmail($email): void
 {
     $this->email = $email;
 }
 
-public function setTel($role): void
+public function setRole($role): void
 {
     $this->role = $role;
 }
