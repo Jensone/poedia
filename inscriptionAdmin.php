@@ -41,7 +41,7 @@ require_once './partials/_connectUser.php';
             <label for="exampleInputEmail4" class="form-label">Admin</label>
             <input type="text" name="role" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" hidden>
         </div>
-        <button type="submit" name="connect" class="btn btn-primary" value="inscription">S'inscrire</button>
+        <button type="submit" name="addUser" class="btn btn-primary" value="inscription">S'inscrire</button>
     </form>
 
 </section>
