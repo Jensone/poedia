@@ -40,6 +40,12 @@ class Commande
         return $commande;
     }
 
+    public static function afficherUn(Int $id): Array
+    {
+        $livre = Database::afficherUn('livres', $id);
+        return $livre;
+    }
+
     public function getClient(): string
     {
         return $this->client;
