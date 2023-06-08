@@ -109,7 +109,7 @@ include_once 'partials/_head.php'; ?>
 <section class="pt-28 pb-36 bg-light overflow-hidden">
   <div class="container">
     <div class="text-center mb-20">
-      <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">The team that made us successful</p>
+      <p class="d-inline-block fs-20 fw-semibold text-white text-uppercase mb-6" style="letter-spacing: 1px; background: linear-gradient(98.24deg, #6CD5F7 0%, #FEE2CE 35.94%, #B0A9DF 69.27%, #5B6AF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Gérer les commandes en quelques clics</p>
       <h2 class="fs-10 fw-semibold text-white mb-5">Les commandes </h2>
       <input class="form-control rounded m-2" type="search" placeholder="Recherche une commande" aria-label="Search">
       <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Rechercher</button>
@@ -123,23 +123,20 @@ include_once 'partials/_head.php'; ?>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form class="row gy-2 gx-3 align-items-center">
+            <form class="m-1 row gy-2 gx-3 align-items-center">
               <div class="col-auto">
                 <input type="text" class="form-control" id="autoSizingInput" placeholder="Nom du client">
               </div>
               <div class="col-auto">
-                <label class="visually-hidden" for="autoSizingInputGroup">Prénom</label>
                 <div class="input-group">
-                 
                   <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Prénom du client">
                 </div>
               </div>
               <div class="col-auto">
-                <label class="visually-hidden" for="autoSizingSelect">Preference</label>
                 <select class="form-select" id="autoSizingSelect">
                   <option selected>Livre...</option>
                   <option value="idLivre">
-                    <?php foreach ($livres as $livre) { ?><?= $livre['id']?></option>
+                    <?php foreach ($livres as $livre) { ?><?= $livre['titre']?></option>
                   <option value="2">Two</option>
                   <?php } ?>
                 </select>
@@ -152,7 +149,7 @@ include_once 'partials/_head.php'; ?>
               </div>
             </form>
 
-            <div class="modal-footer">
+            <div class="modal-footer m-2">
               <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
               <button type="button" class="btn btn-primary">Valider</button>
             </div>
