@@ -422,10 +422,18 @@ include_once 'partials/_head.php'; ?>
 
 <!-- TO DO :
 
-    * coller code des cartes dans fichier tiers pour en garder une trace
+    🚧 corriger php pour afficher la liste des titres des livres dans le formulaire d'ajout de commande
+
+    🧐 définir en front le statut des booléens 
+    - 0 = en cours
+    - 1 = commande archivée
+
+    🧐 modifier la largeur de la barre de recherche (20% largeur)
+
+    ✅ coller code des cartes dans fichier tiers pour en garder une trace
     * FAIRE UN PULL REQUEST
-    * CREER CHEMIN boutton ajouter une commande
-    * CREER FORMULAIRE ajout de commande qui comprend les champs suivants :
+    ✅ CREER bouton ajouter une commande
+    ✅ CREER FORMULAIRE ajout de commande qui comprend les champs suivants :
         - idClient:
             - NOM du client
             - PRENOM du client
@@ -433,35 +441,30 @@ include_once 'partials/_head.php'; ?>
             - titre livre
         - dates d'emprunt (début et retour)
         - valider
-    * AFFICHER le nom des clients et non des numéros (faire les relations dans bdd)
-    * AFFICHER le titre des livres et non des numéros (faire les relations dans bdd)
-    * remplacer les cartes de commandes par un tableau (table dans boostrap)
+    ✅ AFFICHER le nom des clients et non des numéros (faire les relations dans bdd)
+    ✅ AFFICHER le titre des livres et non des numéros (faire les relations dans bdd)
+    ✅ remplacer les cartes de commandes par un tableau (table dans boostrap)
     => Faire la jointure avec la bdd : cf. branche github branche J. > Livres pour lier id à la bdd (récupérer le nom de l'auteur)
   
-    ** cases du tableau 
-    - id
-    - livre
-    - client
-    - date
-    - retour
-    - statut
-    - rendu / dépôt
+      > cases du tableau 
+      - id
+      - livre
+      - client
+      - date
+      - retour
+      - statut
+      - rendu / dépôt
 
-    + créer
-    + supprimer
-    + modifier (uniquement date de retour)
-    + rechercher une commande
+      + créer
+      + supprimer
+      + modifier (uniquement date de retour)
+      + rechercher une commande
 
-    * définit en front le statut 
-    - 0 = en cours
-    - 1 = commande archivée
+    ✅ remplacer la boucle foreach pour que toutes les autres lignes en gras disparaissent
 
-    * modifier la largeur de la barre de recherche (20% largeur)
-
-    * remplacer la boucle foreach pour que toutes les autres lignes en gras disparaissent
-
-    * FORM bouton supprimer -> voulez-vous vraiment annuler cette commande ?
-    * FORM bouton modifier -> prolonger cet emprunt
-    * FORM bouton dépôt -> Vous vous appretez à enregistrer le dépôt de cette commande :
+    ✅ FORM bouton supprimer -> voulez-vous vraiment annuler cette commande ?
+    ✅ FORM bouton modifier -> prolonger cet emprunt
+    ✅ FORM bouton dépôt -> Vous vous appretez à enregistrer le dépôt de cette commande :
           - Confirmer le dépôt
+
       -->
