@@ -5,8 +5,8 @@ namespace App;
 use App\Database;
 use App\Utilisateur;
 
-require_once './Database/Database.php';
-require_once './classes/Utilisateur/Utilisateur.php';
+include_once './Database/Database.php';
+include_once './classes/Utilisateur/Utilisateur.php';
 
 class UserController extends Utilisateur
 {
@@ -27,7 +27,20 @@ public static function addUser(): void
 
         $query->execute();
 
-        header('Location: ./projet-book-app/profil.php');
+        header('Location: /profil.php');
+    }
+
+    public static function deleteUser($id)
+    {
+        $pdo = Database::connect();
+
+        $query = $pdo->prepare('DELETE FROM utilisateurs WHERE id = :id');
+
+        $query->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        $query->execute();
+
+        header('Location: /profil.php');
     }
 
 

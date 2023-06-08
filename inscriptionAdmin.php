@@ -16,7 +16,7 @@ require_once './partials/_connectUser.php';
 
 <section style="background: linear-gradient(112.84deg, #46BAEB 0.33%, #AF2CFF 38.23%, #F790AF 65.22%, #C1ABFF 100%)">
 
-    <form action="<?php $path ?>" method="post">
+    <form action="<?php $path ?>config/forms.php" method="post">
     <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
             <input type="text" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

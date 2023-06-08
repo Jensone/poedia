@@ -45,13 +45,6 @@ class Utilisateur
     }
 
 
-    
-    
-    public function seDeconnecter($id,$nom,$email,$role,$motDePasse): void
-    {
-        
-    }
-
 
     public function getId(): int
 {

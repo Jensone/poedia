@@ -6,18 +6,18 @@ use App\Database;
 use App\Utilisateur;
 use App\UserController;
 
-require_once './classes/Utilisateur/Utilisateur.php';
-require_once './partials/_connectUser.php';
+include_once '../classes/Utilisateur/Utilisateur.php';
+include_once '../partials/_connectUser.php';
 
 if (isset($_POST['addUser'])) {
-    $book = new Utilisateur(
+    $utilisateur = new Utilisateur(
         $_POST['id'],
         $_POST['nom'],
         $_POST['prenom'],
         $_POST['email'],
-        $_POST['role'],
-        $_POST['motDePasse']
+        $_POST['password'],
+        $_POST['role']
     );
     
-    $persist = UserController::addUser($utilisateurs);
+    $persist = UserController::addUser($utilisateur);
 }
