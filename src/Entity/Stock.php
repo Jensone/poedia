@@ -14,7 +14,7 @@ class Stock
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $quantity = null;
+    private ?int $quantity = 0;
 
     public function getId(): ?int
     {
