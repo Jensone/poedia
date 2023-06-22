@@ -2,23 +2,23 @@
 
 /* Coulors */
 :root {
---royal-blue-web-color: rgba(33, 107, 233, 1);
---eerie-black: rgba(37, 37, 37, 1);
---seasalt: rgba(249, 249, 249, 1);
---french-rose: rgba(248, 61, 117, 1);
+    --royal-blue-web-color: rgba(33, 107, 233, 1);
+    --eerie-black: rgba(37, 37, 37, 1);
+    --seasalt: rgba(249, 249, 249, 1);
+    --french-rose: rgba(248, 61, 117, 1);
 }
 
 /* Gradient */
 :root {
---gradient-top: linear-gradient(0deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
---gradient-right: linear-gradient(90deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
---gradient-bottom: linear-gradient(180deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
---gradient-left: linear-gradient(270deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
---gradient-top-right: linear-gradient(45deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
---gradient-bottom-right: linear-gradient(135deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
---gradient-top-left: linear-gradient(225deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
---gradient-bottom-left: linear-gradient(315deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
---gradient-radial: radial-gradient(#216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-top: linear-gradient(0deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-right: linear-gradient(90deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-bottom: linear-gradient(180deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-left: linear-gradient(270deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-top-right: linear-gradient(45deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-bottom-right: linear-gradient(135deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-top-left: linear-gradient(225deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-bottom-left: linear-gradient(315deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-radial: radial-gradient(#216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
 }
 
 /* Fonts */
@@ -27,7 +27,139 @@ body {
     font-weight: 300;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
 }
+
+/* login-page */
+/* .input {
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #e8e8e8;
+    box-shadow: 6px 6px 12px #ffffff,
+        -6px -6px 12px #c5c5c5;
+    font-size: medium;
+    font-weight: bold;
+    max-width: 50rem;
+}
+
+.input:focus {
+    outline-color: white;
+    place-content: "Enter your message!";
+} */
+
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background:var(--seasalt);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.09);
+    border-radius: 10px;
+  }
+  
+  .login-box .user-box {
+    position: relative;
+  }
+  
+  .login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+  
+  .login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--royal-blue-web-color);
+    pointer-events: none;
+    transition: .5s;
+  }
+  
+  .login-box .user-box input:focus ~ label,
+  .login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: var(--royal-blue-web-color);
+    font-size: 12px;
+  }
+  
+  .login-box form a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px
+  }
+  .btn {
+    padding: 17px 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color:var(--royal-blue-web-color);
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+   }
+   
+   .btn:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+   }
+   
+   .btn:active {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+   }
+  
+
+  @keyframes btn-anim1 {
+    0% {
+      left: -100%;
+    }
+  
+    50%,100% {
+      left: 100%;
+    }
+  }
+  
+  .login-box a span:nth-child(1) {
+    bottom: 2px;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #03f40f);
+    animation: btn-anim1 2s linear infinite;
+  }
