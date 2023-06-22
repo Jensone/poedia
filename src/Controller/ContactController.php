@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'contact')]
+    #[Route('/contact', name: 'contact', methods: ['GET', 'POST'])]
     public function index(
         Request $request,
         MailerInterface $mailer

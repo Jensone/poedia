@@ -21,91 +21,110 @@ class ContactType extends AbstractType
         $builder
 
 
-        
-        ->add('firstName', TextType::class, [
-            'label' => 'Prénom',
-            'attr' => ['placeholder' => 'Votre prénom'],
-            'required' => 'true',
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Auriez-vous oublié votre prénom ?'
-                ]),
-                new Length([
-                    'min' => 2,
-                    'minMessage' => 'Ecrivez un minimum de {{ limit }} caractères',
-                    'max' => 30,
-                    'minMessage' => 'Vous avez dépassé la limte de {{ limit }} caractères'
-                ]),
-                new Regex([
-                    'pattern' => '/^[a-zA-Z]+$/',
-                    'message' => 'Vous avez écrit des carctères non valides'
+
+            ->add('firstName', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                    'placeholder' => 'Votre prénom',
+                    'class' => 'form-control mb-4'
+                ],
+                'required' => 'true',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Auriez-vous oublié votre prénom ?'
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'minMessage' => 'Ecrivez un minimum de {{ limit }} caractères',
+                        'max' => 30,
+                        'minMessage' => 'Vous avez dépassé la limte de {{ limit }} caractères'
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z]+$/',
+                        'message' => 'Vous avez écrit des carctères non valides'
                     ])
-            ]
-        ])
+                ]
+            ])
 
-        
-        ->add('lastName', TextType::class, [
-            'label' => 'Nom',
-            'attr' => ['placeholder' => 'Votre nom'],
-            'required' => 'true',
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Auriez-vous oublié votre nom ?'
-                ]),
-                new Length([
-                    'min' => 2,
-                    'minMessage' => 'Ecrivez un minimum de {{ limit }} caractères',
-                    'max' => 30,
-                    'minMessage' => 'Vous avez dépassé la limte de {{ limit }} caractères'
-                ]),
-                new Regex([
-                    'pattern' => '/^[a-zA-Z]+$/',
-                    'message' => 'Vous avez écrit des carctères non valides'
+
+            ->add('lastName', TextType::class, [
+                'label' => 'Nom',
+                'attr' => [
+                    'placeholder' => 'Votre nom',
+                    'class' => 'form-control mb-4'
+                ],
+                'required' => 'true',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Auriez-vous oublié votre nom ?'
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'minMessage' => 'Ecrivez un minimum de {{ limit }} caractères',
+                        'max' => 30,
+                        'minMessage' => 'Vous avez dépassé la limte de {{ limit }} caractères'
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z]+$/',
+                        'message' => 'Vous avez écrit des carctères non valides'
                     ])
-            ]
-        ])
+                ]
+            ])
 
-        
-        ->add('E-mail', EmailType::class, [
-            'label' => 'E-mail',
-            'attr' => ['placeholder' => 'Votre mail'],
-            'required' => 'true',
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Auriez-vous oublié votre nom ?'
-                ]),
-                new Regex([
-                    'pattern' => "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/",
-                    'message' => 'Vous avez écrit des carctères non valides'
+
+            ->add('E-mail', EmailType::class, [
+                'label' => 'E-mail',
+                'attr' => [
+                    'placeholder' => 'Votre mail',
+                    'class' => 'form-control mb-4'
+                ],
+                'required' => 'true',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Auriez-vous oublié votre nom ?'
+                    ]),
+                    new Regex([
+                        'pattern' => "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/",
+                        'message' => 'Vous avez écrit des carctères non valides'
                     ])
-            ]
-        ])
+                ]
+            ])
 
-        
-        ->add('telephone', TelType::class, [
-            'label' => 'Numéro de téléphone',
-            'attr' => ['placeholder' => 'Votre numéro de téléphone'],
-        ])
 
-        
-        ->add('objet', TextType::class, [
-            'label' => 'Objet de votre message',
-            'attr' => ['placeholder' => 'Ecrivez l\'objet de votre message'],
-            'required' => 'true'
-        ])
+            ->add('telephone', TelType::class, [
+                'label' => 'Numéro de téléphone',
+                'attr' => [
+                    'placeholder' => 'Votre numéro de téléphone',
+                    'class' => 'form-control mb-4'
+                ],
+            ])
 
-        
-        ->add('message', TextareaType::class, [
-            'label' => 'Message',
-            'attr' => ['placeholder' => 'Ecrivez votre message ici'],
-            'required' => 'true'
-        ])
 
-        
-        ->add('submit', SubmitType::class, [
-            'label' => 'Envoyer'
-        ])
-        ;
+            ->add('objet', TextType::class, [
+                'label' => 'Objet de votre message',
+                'attr' => [
+                    'placeholder' => 'Ecrivez l\'objet de votre message',
+                    'class' => 'form-control mb-4'
+                ],
+                'required' => 'true'
+            ])
+
+
+            ->add('message', TextareaType::class, [
+                'label' => 'Message',
+                'attr' => [
+                    'placeholder' => 'Ecrivez votre message ici',
+                    'class' => 'form-control mb-4',
+                    'rows' => 4
+                ],
+                'required' => 'true'
+            ])
+
+
+            ->add('submit', SubmitType::class, [
+                'label' => 'Envoyer',
+                'attr' => ['class' => 'btn btn-primary btn-block mb-4']
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
