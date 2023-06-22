@@ -37,7 +37,7 @@ class ContactType extends AbstractType
                         'min' => 2,
                         'minMessage' => 'Ecrivez un minimum de {{ limit }} caractères',
                         'max' => 30,
-                        'minMessage' => 'Vous avez dépassé la limte de {{ limit }} caractères'
+                        'minMessage' => 'Vous avez dépassé la limite de {{ limit }} caractères'
                     ]),
                     new Regex([
                         'pattern' => '/^[a-zA-Z]+$/',
@@ -62,7 +62,7 @@ class ContactType extends AbstractType
                         'min' => 2,
                         'minMessage' => 'Ecrivez un minimum de {{ limit }} caractères',
                         'max' => 30,
-                        'minMessage' => 'Vous avez dépassé la limte de {{ limit }} caractères'
+                        'minMessage' => 'Vous avez dépassé la limite de {{ limit }} caractères'
                     ]),
                     new Regex([
                         'pattern' => '/^[a-zA-Z]+$/',
@@ -85,7 +85,7 @@ class ContactType extends AbstractType
                     ]),
                     new Regex([
                         'pattern' => "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/",
-                        'message' => 'Vous avez écrit des carctères non valides'
+                        'message' => 'Vous avez écrit des caractères non valides'
                     ])
                 ]
             ])
