@@ -19,16 +19,16 @@ class ContactController extends AbstractController
     ): Response
     {
         $form = $this->createForm(ContactType::class);
-        
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $value = $form->getData();
 
             $email = (new Email())
             ->from($value['E-mail'])
-            ->to($value['Admin'])
+            ->to('contact@poedia.fr')
             ->priority(Email::PRIORITY_HIGH)
             ->subject($value['objet'])
             ->text($value['message'])
