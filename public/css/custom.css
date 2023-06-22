@@ -19,6 +19,19 @@
     --gradient-top-left: linear-gradient(225deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
     --gradient-bottom-left: linear-gradient(315deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
     --gradient-radial: radial-gradient(#216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+
+}
+
+/* EasyAdmin */
+:root {
+    /* make the backend contents as wide as the browser window */
+    --body-max-width: 100%;
+    /* change the background color of the <body> */
+    --body-bg: #ffffff;
+    /* make the base font size smaller */
+    --font-size-base: 16px;
+    /* remove all border radius to make corners straight */
+    --border-radius: 1vw;
 }
 
 /* Fonts */
