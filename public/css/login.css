@@ -1,0 +1,47 @@
+/* login-page */
+
+.login-box {
+    width: 30rem;
+    padding: 40px;
+    margin-top: 5rem;
+    background: var(--seasalt);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .09);
+    border-radius: 10px;
+}
+
+
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+}
+
+.login-box .user-box label {
+    font-size: 16px;
+    color: var(--royal-blue-web-color);
+    pointer-events: none;
+    transition: .5s;
+    font-weight: 400;
+}
+
+/** Login Page **/
+body {
+    background: url('/images/core/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+main {
+    min-height: 60vh;
+}
+
+.login-logo {
+    width: 30vw;
+}
