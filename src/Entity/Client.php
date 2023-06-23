@@ -199,12 +199,12 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
     public function setAddress(string $adress): static
     {
-        $this->adress = $adress;
+        $this->address = $adress;
 
         return $this;
     }
