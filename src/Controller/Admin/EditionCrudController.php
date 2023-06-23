@@ -28,7 +28,7 @@ class EditionCrudController extends AbstractCrudController
         return [
             TextField::new('name'),
             DateField::new('birthday'),
-            TextareaFormField::('description'),
+            TextEditorField::new('description'),
             ImageField::new('logo')            
                 ->setUploadedFileNamePattern('[slug]-[contenthash].[extension]')
                 ->setBasePath('images/logoEdiction/')
