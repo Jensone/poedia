@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ClientRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use App\Repository\ClientRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 class Client implements UserInterface, PasswordAuthenticatedUserInterface
@@ -17,7 +18,9 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank(message: "Veuillez renseigner une adresse email.")]
+    #[Assert\Email(message: "Veuillez renseigner une adresse email valide.")]
+    #[ORM\Column(unique: true)]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -26,35 +29,47 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
+    #[Assert\NotBlank(message: "Veuillez renseigner un mot de passe.")]
+    #[Assert\Length(min: 8, minMessage: "Le mot de passe doit contenir au moins 8 caractères.")]
     #[ORM\Column]
     private ?string $password = null;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Order::class)]
     private Collection $orders;
 
+    #[Assert\NotBlank(message: "Veuillez renseigner un prénom.")]
+    #[Assert\Length(min: 2, minMessage: "Le prénom doit contenir au moins 2 caractères.")]
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;
 
+    #[Assert\NotBlank(message: "Veuillez renseigner un nom.")]
+    #[Assert\Length(min: 2, minMessage: "Le nom doit contenir au moins 2 caractères.")]
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
+    #[Assert\NotBlank(message: "Veuillez renseigner un numéro de téléphone.")]
+    #[Assert\Length(min: 9, minMessage: "Le numéro de téléphone doit contenir au moins 9 caractères.", max: 20, maxMessage: "Le numéro de téléphone doit contenir au maximum 10 caractères.")]
     #[ORM\Column(length: 100)]
     private ?string $phone = null;
 
+    #[Assert\NotBlank(message: "Veuillez renseigner une adresse.")]
     #[ORM\Column(length: 255)]
     private ?string $address = null;
 
+    #[Assert\NotBlank(message: "Veuillez renseigner une ville.")]
     #[ORM\Column(length: 255)]
     private ?string $city = null;
 
+    #[Assert\NotBlank(message: "Veuillez renseigner un code postal.")]
     #[ORM\Column(length: 255)]
     private ?string $postal = null;
 
+    #[Assert\NotBlank(message: "Veuillez renseigner un pays.")]
     #[ORM\Column(length: 255)]
-    private ?string $country = null;
+    private ?string $country = 'France';
 
     #[ORM\Column]
-    private ?bool $caution = null;
+    private ?bool $caution = false;
 
     public function __construct()
     {
