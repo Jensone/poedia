@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use Assert\File;
-use App\Entity\Book;
+use Asset\Length;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EditionRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EditionRepository::class)]
 class Edition
@@ -20,15 +20,24 @@ class Edition
 
     #[ORM\Column(length: 50)]
     private ?string $name = null;
-    
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+
+    #[Assert\NotBlank(message:"veulliez remplir la date")]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable:false)]
     private ?\DateTimeInterface $birthday = null;
 
+    // #[Assert\NotBlank(message:"Veuillez entrer une description")]
+    #[Assert\Length(
+        min:6,
+        max:10,
+        minMessage:"Veuiller entrer un minimum de description ",
+        maxMessage:"Veuiller entrer un maximum de description",
+        )]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    #[Assert\NotBlank(message:"Veuillez entrer une image")]
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $logo = null; 
+    private ?string $logo = null;
 
     #[ORM\OneToMany(mappedBy: 'edition', targetEntity: Book::class)]
     private Collection $books;
