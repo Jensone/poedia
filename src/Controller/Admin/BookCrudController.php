@@ -36,8 +36,8 @@ class BookCrudController extends AbstractCrudController
                 ->setCrudController(EditionCrudController::class),
             AssociationField::new('format')
                 ->setCrudController(FormatCrudController::class),
-            AssociationField::new('stock')
-                ->setCrudController(StockCrudController::class),
+            // AssociationField::new('stock')
+            //     ->setCrudController(StockCrudController::class),
             ImageField::new('cover')
             ->setUploadedFileNamePattern('[slug]-[contenthash].[extension]')
             ->setBasePath('images/book/')
