@@ -28,9 +28,12 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[Assert\Isbn(
-        type: Assert\Isbn::ISBN_10,
-        message: 'This value is not valid.',
+    #[Assert\Type(type: 'string')]
+    #[Assert\Length(
+        min: 13,
+        max: 17,
+        minMessage: 'un ISBN doit contenir minimum {{ limit }} chiffre',
+        maxMessage: 'un ISBN ne peut contenir maximum que {{ limit }} chiffre',
     )]
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $isbn = null;
@@ -43,14 +46,11 @@ class Book
     private ?int $pages = null;
 
 
-    #[Assert\DateTime]
+    
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $publicationDate = null;
 
-    #[Assert\File(
-        extensions: ['jpeg','jpg','png'],
-        extensionsMessage: 'Seul les extensions jpeg, jpg et png sont autorisés',
-    )]
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $cover = null;
     
