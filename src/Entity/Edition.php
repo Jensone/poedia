@@ -25,18 +25,18 @@ class Edition
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable:false)]
     private ?\DateTimeInterface $birthday = null;
 
-    // #[Assert\NotBlank(message:"Veuillez entrer une description")]
+    #[Assert\NotBlank(message:"Veuillez entrer une description")]
     #[Assert\Length(
         min:6,
-        max:10,
-        minMessage:"Veuiller entrer un minimum de description ",
-        maxMessage:"Veuiller entrer un maximum de description",
+        max:200,
+        minMessage:"Votre description ne peut pas être inférieur à 6 caractères",
+        maxMessage:"Votre description ne peut pas être superieur à 200 caractères",
         )]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[Assert\NotBlank(message:"Veuillez entrer une image")]
-    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(message:"Veuillez televerser une image")]
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $logo = null;
 
     #[ORM\OneToMany(mappedBy: 'edition', targetEntity: Book::class)]
