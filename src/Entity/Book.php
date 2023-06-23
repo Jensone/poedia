@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\BookRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Order;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\BookRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 class Book
@@ -16,21 +18,43 @@ class Book
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Veuillez écrire un titre de minimum {{ limit }} caractère',
+        maxMessage: 'Veuillez écrire un titre de maximum {{ limit }} caractère',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Assert\Isbn(
+        type: Assert\Isbn::ISBN_10,
+        message: 'This value is not valid.',
+    )]
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $isbn = null;
 
+    #[Assert\Type(
+        type: 'integer',
+        message: 'The {{ value }} is not a valid {{ type }}'
+    )]
     #[ORM\Column(nullable: true)]
     private ?int $pages = null;
 
+
+    #[Assert\DateTime]
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $publicationDate = null;
 
+    #[Assert\File(
+        extensions: ['jpeg','jpg','png'],
+        extensionsMessage: 'Seul les extensions jpeg, jpg et png sont autorisés',
+    )]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $cover = null;
-
+    
+    
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
