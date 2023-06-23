@@ -3,7 +3,15 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Book;
+use App\Controller\Admin\StockCrudController;
+use App\Controller\Admin\AuthorCrudController;
+use App\Controller\Admin\FormatCrudController;
+use App\Controller\Admin\EditionCrudController;
+use App\Controller\Admin\CategoryCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -17,6 +25,15 @@ class BookCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Book::class;
+    }
+
+    public function configureActions(Actions $actions): Actions
+{
+    return $actions
+        // ...
+        ->add(Crud::PAGE_INDEX, Action::DETAIL)
+        ->add(Crud::PAGE_EDIT, Action::SAVE_AND_ADD_ANOTHER)
+    ;
     }
 
     
