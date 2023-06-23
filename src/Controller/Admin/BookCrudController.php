@@ -16,6 +16,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -55,6 +56,7 @@ class BookCrudController extends AbstractCrudController
                 ->setCrudController(FormatCrudController::class),
             // AssociationField::new('stock')
             //     ->setCrudController(StockCrudController::class),
+            CollectionField::new('order')->setEntryType(OrderCrudController::class),
             ImageField::new('cover')
             ->setUploadedFileNamePattern('[slug]-[contenthash].[extension]')
             ->setBasePath('images/book/')
