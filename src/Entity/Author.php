@@ -148,4 +148,11 @@ class Author
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        $auth = $this->firstname.' '.$this->lastname;
+
+        return $auth;
+    }
 }
