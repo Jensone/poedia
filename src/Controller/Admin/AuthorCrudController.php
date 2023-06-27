@@ -20,8 +20,7 @@ class AuthorCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            FormField::addPanel('Fiche auteur')
-                ->setHelp('Remplissez les champs pour créer une fiche auteur. Pour ajouter une photo, cliquez sur "Photo" en bas de page.'),
+            
             TextField::new('firstname'),
             TextField::new('lastname'),
             TextField::new('nationality'),
