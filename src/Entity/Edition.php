@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\EditionRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Asset\Length;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EditionRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EditionRepository::class)]
 class Edition
@@ -19,13 +21,22 @@ class Edition
     #[ORM\Column(length: 50)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Assert\NotBlank(message:"veulliez remplir la date")]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable:false)]
     private ?\DateTimeInterface $birthday = null;
 
+    #[Assert\NotBlank(message:"Veuillez entrer une description")]
+    #[Assert\Length(
+        min:6,
+        max:200,
+        minMessage:"Votre description ne peut pas être inférieur à 6 caractères",
+        maxMessage:"Votre description ne peut pas être superieur à 200 caractères",
+        )]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(message:"Veuillez televerser une image")]
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $logo = null;
 
     #[ORM\OneToMany(mappedBy: 'edition', targetEntity: Book::class)]
