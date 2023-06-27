@@ -17,11 +17,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-<<<<<<< HEAD
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
-=======
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
->>>>>>> ad6499987dc37e7229ded200d4ada2caf1469213
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -44,29 +40,6 @@ class BookCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-<<<<<<< HEAD
-           // IdField::new('id'),
-            TextField::new('title'),
-            IntegerField::new('isbn'),
-            IntegerField::new('pages'),
-            DateTimeField::new('publicationDate'),
-            AssociationField::new('category')
-            ->setCrudController(CategoryCrudController::class),
-            AssociationField::new('author')
-                ->setCrudController(AuthorCrudController::class),
-            AssociationField::new('edition')
-                ->setCrudController(EditionCrudController::class),
-            AssociationField::new('format')
-                ->setCrudController(FormatCrudController::class),
-            // AssociationField::new('stock')
-            //     ->setCrudController(StockCrudController::class),
-            CollectionField::new('order')->setEntryType(OrderCrudController::class),
-            ImageField::new('cover')
-            ->setUploadedFileNamePattern('[slug]-[contenthash].[extension]')
-            ->setBasePath('images/book/')
-            ->setUploadDir('public/images/book/'),
-            TextEditorField::new('description'),
-=======
             TextField::new('title', 'Titre')
                 ->setHelp('Le titre du livre à ajouter'),
 
@@ -112,7 +85,6 @@ class BookCrudController extends AbstractCrudController
             TextareaField::new('description', 'Description')
                 ->setHelp("Un résumé de l'histoire")
                 ->hideOnIndex(),
->>>>>>> ad6499987dc37e7229ded200d4ada2caf1469213
         ];
     }
 }
